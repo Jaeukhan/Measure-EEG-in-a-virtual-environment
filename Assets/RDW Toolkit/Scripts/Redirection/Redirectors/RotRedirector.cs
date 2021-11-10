@@ -101,8 +101,11 @@ public class RotRedirector : Redirector {
         float deltaDir = redirectionManager.deltaDir;
 
         rotationFromRotationGain = 0;
-
-        rotationFromRotationGain = Mathf.Min(Mathf.Abs(deltaDir * redirectionManager.ROT_GAIN), ROTATION_GAIN_CAP_DEGREES_PER_SECOND * redirectionManager.GetDeltaTime());
+        
+        if (deltaDir > 0)
+            rotationFromRotationGain = Mathf.Abs(deltaDir * redirectionManager.ROT_GAIN);
+        else
+            rotationFromRotationGain = -1 * Mathf.Abs(deltaDir * redirectionManager.ROT_GAIN);
 
         float finalRotation = (1.0f - SMOOTHING_FACTOR) * lastRotationApplied + SMOOTHING_FACTOR * rotationFromRotationGain;
         lastRotationApplied = finalRotation;
