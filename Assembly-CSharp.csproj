@@ -384,19 +384,19 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="AsyncIO">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Assets/LooxidLink/Plugins/AsyncIO.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Assets/LooxidLink/Plugins/AsyncIO.dll</HintPath>
     </Reference>
     <Reference Include="LooxidLink">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Assets/LooxidLink/Plugins/LooxidLink.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Assets/LooxidLink/Plugins/LooxidLink.dll</HintPath>
     </Reference>
     <Reference Include="MsgPack">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Assets/LooxidLink/Plugins/MsgPack.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Assets/LooxidLink/Plugins/MsgPack.dll</HintPath>
     </Reference>
     <Reference Include="NetMQ">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Assets/LooxidLink/Plugins/NetMQ.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Assets/LooxidLink/Plugins/NetMQ.dll</HintPath>
     </Reference>
     <Reference Include="Valve.Newtonsoft.Json">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -753,31 +753,31 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/J.U. Han/Walking_EEG2/Walking_EEG2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/J.U. Han/Walking_EEG2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -100,16 +100,19 @@ public class RotRedirector : Redirector {
         Vector3 deltaPos = redirectionManager.deltaPos;
         float deltaDir = redirectionManager.deltaDir;
 
-        rotationFromRotationGain = 0;
-        
-        if (deltaDir > 0)
-            rotationFromRotationGain = Mathf.Abs(deltaDir * redirectionManager.ROT_GAIN);
-        else
-            rotationFromRotationGain = -1 * Mathf.Abs(deltaDir * redirectionManager.ROT_GAIN);
+        //Transform mapTransform = GameObject.Find("Map").transform;
 
-        float finalRotation = (1.0f - SMOOTHING_FACTOR) * lastRotationApplied + SMOOTHING_FACTOR * rotationFromRotationGain;
-        lastRotationApplied = finalRotation;
-        InjectRotation(finalRotation);
+        //Vector2 tempForward = new Vector2(mapTransform.forward.x, mapTransform.forward.z);
+        //Vector2 newForward = Utilities.RotateVector2(tempForward, -deltaDir);
+        //mapTransform.forward = new Vector3(newForward.x, 0, newForward.y);
+
+        rotationFromRotationGain = 0;
+
+        rotationFromRotationGain = (deltaDir * (redirectionManager.ROT_GAIN-1));
+
+        //float finalRotation = (1.0f - SMOOTHING_FACTOR) * lastRotationApplied + SMOOTHING_FACTOR * rotationFromRotationGain;
+        //lastRotationApplied = finalRotation;
+        InjectRotation(rotationFromRotationGain);
 
     }
     // public override void ApplyRedirection()

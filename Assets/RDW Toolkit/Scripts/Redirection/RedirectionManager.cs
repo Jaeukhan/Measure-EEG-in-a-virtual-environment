@@ -33,7 +33,8 @@ public class RedirectionManager : MonoBehaviour {
     public float MIN_ROT_GAIN = 0.67F;// -0.2F;
 
     [Tooltip("rotation gain applied")]
-    [Range(-0.2F, 5.0F)]
+
+    [Range(-5.0F, 5.0F)]
     public float ROT_GAIN = 0.67F;// -0.2F;
 
     [Tooltip("Radius applied by curvature gain")]
@@ -114,6 +115,13 @@ public class RedirectionManager : MonoBehaviour {
     public string roomTypeName;
 
     public GeometryInfo.SpaceShape spaceShape;
+
+    private bool initialbase = false;
+    private int baselinesecond = 0;
+    private int oneTime = -3;
+    private int previousOneTime = 0;
+    private int previousOneTime2 = 0;
+    private float timefactor = 1.0f;
 
     //[HideInInspector]
     //bool needChange1 = false;
@@ -267,12 +275,75 @@ public class RedirectionManager : MonoBehaviour {
 
         //if (MOVEMENT_CONTROLLER == MovementController.AutoPilot)
         //    simulatedWalker.WalkUpdate();
+        
 
-        if(Time.time/0.8f > 180f)
+        if ((int)(Time.time/ timefactor) - baselinesecond > 0)
         {
+            if (baselinesecond%3 == 0 && baselinesecond != 0)
+            {
+                oneTime++;
+            }
+            
+            if((Time.time / timefactor) > 5f && (Time.time / timefactor) < 11f)
+            {
+                Debug.Log("준비하세요");
+            }
+           
+        }
+
+        if(Time.time/ timefactor > 11f && Time.time/timefactor < 41f)
+        {
+            if (oneTime - previousOneTime > 0)
+            {
+                // Beep
+                Debug.Log("도세요");
+
+                // Debug.Log(oneTime);
+                previousOneTime = oneTime;
+
+            }
+        }
+
+        if(Time.time / timefactor > 30f + 11f && Time.time / timefactor < 71f)
+        {
+
+            if (oneTime - previousOneTime > 0)
+            {
+                // Beep
+                Debug.Log("도세요");
+                // Debug.Log(oneTime);
+                previousOneTime = oneTime;
+
+            }
+
+            if(oneTime%2==0 && (oneTime - previousOneTime2 > 0))
+            {
+                ROT_GAIN = ROT_GAIN + 0.1f;
+                // Debug.Log(ROT_GAIN);
+                previousOneTime2 = oneTime;
+            }
+        }
+        else if(Time.time / timefactor > 71f && Time.time/timefactor < 101f)
+        {
+            if (oneTime - previousOneTime > 0)
+            {
+                // Beep
+                Debug.Log("도세요");
+                // Debug.Log(oneTime);
+                previousOneTime = oneTime;
+
+            }
+           // do nothing
+        }
+        else if(Time.time/timefactor > 103f)
+        {
+            visualizerManager.EEG2Csv();
             ExitGame();
         }
 
+
+        baselinesecond = (int)(Time.time / timefactor);
+        
         //if(needChange1)
         //{
         //    if(roomTypeName=="SQUARE")
@@ -619,7 +690,7 @@ public class RedirectionManager : MonoBehaviour {
             usingreset = true;
             inReset = true;
             trailDrawer.AddResetTime();
-            visualizerManager.EEG2Csv();
+            // visualizerManager.EEG2Csv();
 
         }
         else if(tilingMode) // 조개줍기 등의 시나리오 필요, 사운드 필요, Drawer 보이기 안보이기 필요

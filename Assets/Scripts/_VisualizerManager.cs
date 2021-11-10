@@ -41,7 +41,6 @@ namespace Vrwave
 
         private float starttime = 0;
         private const int linkFequency = 5;
-        private Vector3 playerPos;
 
         private EEGSensor sensorStatusData;
         private EEGRawSignal rawSignalData;
@@ -74,7 +73,6 @@ namespace Vrwave
             LooxidLinkManager.Instance.SetDebug(true);
             LooxidLinkManager.Instance.Initialize();
 
-            playerPos = VRCamera.transform.position;
             timer = 0.0f;
             stand_num = (int)(display_num * 0.8);
             odd_num = display_num - stand_num;
@@ -146,7 +144,6 @@ namespace Vrwave
 
                 if (displayOrder[ordernum] == 0)
                 {
-                    GameObject.Find("targets").transform.GetChild(0).gameObject.transform.position = playerPos + z1;
                     GameObject.Find("targets").transform.GetChild(0).gameObject.SetActive(true);//standard
 
                     yield return new WaitForSeconds(0.5f);
@@ -159,7 +156,6 @@ namespace Vrwave
                 }
                 else if (displayOrder[ordernum] == 1)
                 {
-                    GameObject.Find("targets").transform.GetChild(1).gameObject.transform.position = playerPos + z1;
                     GameObject.Find("targets").transform.GetChild(1).gameObject.SetActive(true); //oddball
 
                     yield return new WaitForSeconds(0.5f);
@@ -185,14 +181,16 @@ namespace Vrwave
 
         void Update()
         {
-            playerPos = VRCamera.transform.position;
-            if (savestate)
-            {
-                starttime = Time.time;
-                // timer += Time.deltaTime;
-            }
+            // if (savestate)
+            // {
+            //     starttime = Time.time;
+            // }
 
-            if (writing && exitstate)
+            PushExit();
+        }
+        void PushExit()
+        {
+             if (writing && exitstate)
             {
                 Debug.Log("writing");
                 //Write();
@@ -202,11 +200,7 @@ namespace Vrwave
                 writing = false;
                 exitstate = false;
             }
-
-
-
         }
-
         
         void Write()
         {
