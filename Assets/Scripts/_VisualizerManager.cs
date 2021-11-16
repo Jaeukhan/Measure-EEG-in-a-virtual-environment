@@ -35,7 +35,6 @@ namespace Vrwave
         public bool writing = false;
         public bool exitstate = false;
         public int display_num = 10;
-        public int seed = 42;
 
         public bool oddballevent = true;
 
@@ -69,35 +68,34 @@ namespace Vrwave
 
         void Start()
         {
-            UnityEngine.Random.InitState(seed);
             LooxidLinkManager.Instance.SetDebug(true);
             LooxidLinkManager.Instance.Initialize();
+            LooxidLinkManager.Instance.SetDisplaySensorOffMessage(false);
+            LooxidLinkManager.Instance.SetDisplayNoiseSignalMessage(false);
 
             timer = 0.0f;
-            stand_num = (int)(display_num * 0.8);
-            odd_num = display_num - stand_num;
-            for (int i = 0; i < stand_num; i++)
-            {
-                randomOrder.Add(0);
-            }
-            for (int i = 0; i < odd_num; i++)
-            {
-                randomOrder.Add(1);
-            }
-            displayOrder = Shuffle(randomOrder.ToArray());
+            //stand_num = (int)(display_num * 0.8);
+            //odd_num = display_num - stand_num;
+            //for (int i = 0; i < stand_num; i++)
+            //{
+            //    randomOrder.Add(0);
+            //}
+            //for (int i = 0; i < odd_num; i++)
+            //{
+            //    randomOrder.Add(1);
+            //}
+            //displayOrder = Shuffle(randomOrder.ToArray());
 
-            GameObject.Find("Objects").transform.GetChild(0).gameObject.SetActive(true);
-            GameObject.Find("Objects").transform.GetChild(1).gameObject.SetActive(false);
+            //GameObject.Find("Objects").transform.GetChild(0).gameObject.SetActive(true);
+            //GameObject.Find("Objects").transform.GetChild(1).gameObject.SetActive(false);
         }
 
         void OnEnable()
         {
-            LooxidLinkData.OnReceiveEEGSensorStatus += OnReceiveEEGSensorStatus;
             LooxidLinkData.OnReceiveEEGRawSignals += OnReceiveEEGRawSignals;
         }
         void OnDisable()
         {
-            LooxidLinkData.OnReceiveEEGSensorStatus -= OnReceiveEEGSensorStatus;
             LooxidLinkData.OnReceiveEEGRawSignals -= OnReceiveEEGRawSignals;
         }
 
@@ -123,11 +121,11 @@ namespace Vrwave
         void FixedUpdate()
         {
 
-            if (savestate && oddballevent)
-            {
-                StartCoroutine(Displaytarget());
-                oddballevent = false;
-            }
+            //if (savestate && oddballevent)
+            //{
+            //    StartCoroutine(Displaytarget());
+            //    oddballevent = false;
+            //}
 
         }
         IEnumerator Displaytarget()
@@ -210,7 +208,7 @@ namespace Vrwave
             }
         }
 
-        int[] Shuffle(int[] deck)
+        public int[] Shuffle(int[] deck)
         {
             for (int i = 0; i < deck.Length; i++)
             {
@@ -222,7 +220,19 @@ namespace Vrwave
             return deck;
         }
 
-        public double Min(List<double> minList)
+        public float[] Shuffle(float[] deck)
+        {
+            for (int i = 0; i < deck.Length; i++)
+            {
+                float temp = deck[i];
+                int randomIndex = UnityEngine.Random.Range(0, deck.Length);
+                deck[i] = deck[randomIndex];
+                deck[randomIndex] = temp;
+            }
+            return deck;
+        }
+
+            public double Min(List<double> minList)
         {
             if (minList.Count <= 0) return 0.0;
             double min = minList[0];
@@ -314,6 +324,43 @@ namespace Vrwave
             // outStream2.WriteLine(sb);
             // outStream2.Close();
             // redirectionManager.ExitGame();
+        }
+
+        public void EEG2Csv(string name)
+        {
+            List<string[]> userData = new List<string[]>();
+            string[] tempData = new string[7] { "", "AF3", "AF4", "Fp1", "Fp2", "AF7", "AF8" };
+
+            userData.Add(tempData);
+            for (int i = 0; i < saveDatas[5].GetLength(); i++)
+            {
+                tempData = new string[7];
+                tempData[0] = i.ToString();
+                tempData[1] = saveDatas[0].GetValueOne(i).ToString();
+                tempData[2] = saveDatas[1].GetValueOne(i).ToString();
+                tempData[3] = saveDatas[2].GetValueOne(i).ToString();
+                tempData[4] = saveDatas[3].GetValueOne(i).ToString();
+                tempData[5] = saveDatas[4].GetValueOne(i).ToString();
+                tempData[6] = saveDatas[5].GetValueOne(i).ToString();
+                userData.Add(tempData);
+            }
+            string[][] output = new string[userData.Count][];
+            for (int i = 0; i < output.Length; i++)
+            {
+                output[i] = userData[i];
+            }
+            int length = output.GetLength(0);
+            string delimiter = ",";
+            StringBuilder sb = new StringBuilder();
+
+            for (int index = 0; index < length; index++)
+            {
+                sb.AppendLine(string.Join(delimiter, output[index]));
+            }
+            string filePath = Path.Combine("Assets/WaveResults", "EEG_"+name + DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
+            StreamWriter outStream = System.IO.File.CreateText(filePath);
+            outStream.WriteLine(sb);
+            outStream.Close();
         }
 
         public void GetRedirectManager()

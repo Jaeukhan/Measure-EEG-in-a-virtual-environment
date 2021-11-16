@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Redirection;
 using Vrwave;
+using System.Media;
 
 public class RedirectionManager : MonoBehaviour {
 
@@ -50,6 +52,8 @@ public class RedirectionManager : MonoBehaviour {
     [Tooltip("Target simulated framerate in auto-pilot mode")]
     public float targetFPS = 60;
 
+    public AudioSource beep;
+
     public static bool usingreset = false;
 
     [HideInInspector]
@@ -94,6 +98,8 @@ public class RedirectionManager : MonoBehaviour {
     public Transform targetWaypoint;
 
     public _VisualizerManager visualizerManager;
+    public int seed = 42;
+    public bool gainrand = false;
 
     [HideInInspector]
     public bool inReset = false;
@@ -122,6 +128,8 @@ public class RedirectionManager : MonoBehaviour {
     private int previousOneTime = 0;
     private int previousOneTime2 = 0;
     private float timefactor = 1.0f;
+    private bool breaktime = false;
+    private float[] randrot;
 
     //[HideInInspector]
     //bool needChange1 = false;
@@ -208,6 +216,15 @@ public class RedirectionManager : MonoBehaviour {
 	void Start () {
         simulatedTime = 0;
         UpdatePreviousUserState();
+        if (gainrand == true)
+        {
+            UnityEngine.Random.InitState(seed);
+            float[] ran = new float[2] {1.0f, 1.6f};
+            randrot = visualizerManager.Shuffle(ran);
+            ROT_GAIN = randrot[0];
+            Debug.Log(ROT_GAIN);
+        }
+
 
         List<int> randomOrder = new List<int>() {0, 1, 2, 3};
         System.Random rnd = new System.Random();
@@ -279,67 +296,79 @@ public class RedirectionManager : MonoBehaviour {
 
         if ((int)(Time.time/ timefactor) - baselinesecond > 0)
         {
-            if (baselinesecond%3 == 0 && baselinesecond != 0)
+            if (baselinesecond % 3 == 0 && baselinesecond != 0)
             {
+                if(baselinesecond>=11)
+                {
+                    beep.Play();
+                }
                 oneTime++;
             }
-            
-            if((Time.time / timefactor) > 5f && (Time.time / timefactor) < 11f)
+            if ((Time.time / timefactor) >= 6f && (Time.time / timefactor) < 11f)
             {
                 Debug.Log("준비하세요");
             }
            
         }
 
-        if(Time.time/ timefactor > 11f && Time.time/timefactor < 41f)
+        else if(Time.time/ timefactor >= 11f && Time.time/timefactor < 41f)
         {
             if (oneTime - previousOneTime > 0)
             {
                 // Beep
                 Debug.Log("도세요");
 
-                // Debug.Log(oneTime);
+                //Debug.Log(oneTime);
                 previousOneTime = oneTime;
 
             }
         }
 
-        if(Time.time / timefactor > 30f + 11f && Time.time / timefactor < 71f)
-        {
-
-            if (oneTime - previousOneTime > 0)
-            {
-                // Beep
-                Debug.Log("도세요");
-                // Debug.Log(oneTime);
-                previousOneTime = oneTime;
-
-            }
-
-            if(oneTime%2==0 && (oneTime - previousOneTime2 > 0))
-            {
-                ROT_GAIN = ROT_GAIN + 0.1f;
-                // Debug.Log(ROT_GAIN);
-                previousOneTime2 = oneTime;
-            }
-        }
-        else if(Time.time / timefactor > 71f && Time.time/timefactor < 101f)
-        {
-            if (oneTime - previousOneTime > 0)
-            {
-                // Beep
-                Debug.Log("도세요");
-                // Debug.Log(oneTime);
-                previousOneTime = oneTime;
-
-            }
-           // do nothing
-        }
-        else if(Time.time/timefactor > 103f)
+        else if (Time.time / timefactor >=41)
         {
             visualizerManager.EEG2Csv();
             ExitGame();
         }
+
+
+
+        //if (Time.time / timefactor >= 30f + 11f && Time.time / timefactor < 70f)
+        //{
+
+        //    if (oneTime - previousOneTime > 0)
+        //    {
+        //        // Beep
+        //        Debug.Log("도세요");
+        //        //Debug.Log(oneTime);
+        //        previousOneTime = oneTime;
+
+        //    }
+
+        //    if(oneTime%2==0 && (oneTime - previousOneTime2 > 0))
+        //    {
+        //        ROT_GAIN = ROT_GAIN + 0.1f;
+        //        //Debug.Log(ROT_GAIN);
+        //        previousOneTime2 = oneTime;
+        //    }
+        //}
+
+        //else if(Time.time / timefactor >=70f && Time.time/timefactor < 101f)
+        //{
+        //    if (oneTime - previousOneTime > 0)
+        //    {
+        //        // Beep
+        //        Debug.Log("도세요");
+        //        // Debug.Log(oneTime);
+        //        previousOneTime = oneTime;
+
+        //    }
+        //   // do nothing
+        //}
+        //else if(Time.time/timefactor > 101f)
+        //{
+        //    visualizerManager.EEG2Csv();
+        //    ExitGame();
+        //}
 
 
         baselinesecond = (int)(Time.time / timefactor);
@@ -457,6 +486,7 @@ public class RedirectionManager : MonoBehaviour {
         UpdateBodyPose();
         UpdateDuplicatedBodyPose();
     }
+
 
     public float GetDeltaTime()
     {
