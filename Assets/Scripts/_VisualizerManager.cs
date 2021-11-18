@@ -357,7 +357,7 @@ namespace Vrwave
             {
                 sb.AppendLine(string.Join(delimiter, output[index]));
             }
-            string filePath = Path.Combine("Assets/WaveResults", "EEG_"+name + DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
+            string filePath = Path.Combine("Assets/WaveResults", "EEG_"+name+'_' + DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
             StreamWriter outStream = System.IO.File.CreateText(filePath);
             outStream.WriteLine(sb);
             outStream.Close();

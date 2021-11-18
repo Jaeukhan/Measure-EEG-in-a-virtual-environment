@@ -324,9 +324,9 @@ public class RedirectionManager : MonoBehaviour {
             }
         }
 
-        else if (Time.time / timefactor >=41)
+        else if (Time.time / timefactor >=42)
         {
-            visualizerManager.EEG2Csv();
+            visualizerManager.EEG2Csv(ROT_GAIN.ToString());
             ExitGame();
         }
 
