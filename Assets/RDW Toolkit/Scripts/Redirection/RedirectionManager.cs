@@ -122,6 +122,7 @@ public class RedirectionManager : MonoBehaviour {
 
     public GeometryInfo.SpaceShape spaceShape;
 
+    public ActionTest actionTest;
     private bool initialbase = false;
     private int baselinesecond = 0;
     private int oneTime = -3;
@@ -243,34 +244,6 @@ public class RedirectionManager : MonoBehaviour {
             }
         }
 
-        //if(initialIndex == 0)
-        //{
-        //    needChange1 = true;
-        //    needChange2 = false;
-        //    needChange3 = false;
-        //    needChange4 = false;
-        //}
-        //else if(initialIndex == 1)
-        //{
-        //    needChange1 = false;
-        //    needChange2 = true;
-        //    needChange3 = false;
-        //    needChange4 = false;
-        //}
-        //else if(initialIndex == 2)
-        //{
-        //    needChange1 = false;
-        //    needChange2 = false;
-        //    needChange3 = true;
-        //    needChange4 = false;
-        //}
-        //else if(initialIndex == 3)
-        //{
-        //    needChange1 = false;
-        //    needChange2 = false;
-        //    needChange3 = false;
-        //    needChange4 = true;
-        //}
 	}
 	
 	// Update is called once per frame
@@ -280,20 +253,7 @@ public class RedirectionManager : MonoBehaviour {
 
     void FixedUpdate()
     {
-        // if(testBool)
-        // {
-        //     Debug.Log(needChange1);
-        //     Debug.Log(needChange2);
-        //     Debug.Log(needChange3);
-        //     Debug.Log(needChange4);
-        //     testBool = false;
-        // }
-        //simulatedTime += 1.0f / targetFPS;
-
-        //if (MOVEMENT_CONTROLLER == MovementController.AutoPilot)
-        //    simulatedWalker.WalkUpdate();
-        
-
+       
         if ((int)(Time.time/ timefactor) - baselinesecond > 0)
         {
             if (baselinesecond % 3 == 0 && baselinesecond != 0)
@@ -327,8 +287,13 @@ public class RedirectionManager : MonoBehaviour {
         else if (Time.time / timefactor >=42)
         {
             visualizerManager.EEG2Csv(ROT_GAIN.ToString());
-            ExitGame();
+            if (actionTest.GetoddballCount())
+            {
+                Debug.Log("가상환경이 적게돌아감");
+            }
         }
+
+
 
 
 
@@ -372,79 +337,6 @@ public class RedirectionManager : MonoBehaviour {
 
 
         baselinesecond = (int)(Time.time / timefactor);
-        
-        //if(needChange1)
-        //{
-        //    if(roomTypeName=="SQUARE")
-        //    {
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(0).gameObject.SetActive(true);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(1).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(2).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(3).gameObject.SetActive(false);
-        //    }
-        //    else if(roomTypeName=="ROOM")
-        //    {
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(0).gameObject.SetActive(true);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(1).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(2).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(3).gameObject.SetActive(false);
-        //    }
-        //    needChange1 = false;     
-        //}
-        //else if(needChange2)
-        //{
-        //    if(roomTypeName=="SQUARE")
-        //    {
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(0).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(1).gameObject.SetActive(true);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(2).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(3).gameObject.SetActive(false);
-        //    }
-        //    else if(roomTypeName=="ROOM")
-        //    {
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(0).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(1).gameObject.SetActive(true);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(2).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(3).gameObject.SetActive(false);
-        //    }
-        //    needChange2 = false;
-        //}
-        //else if(needChange3)
-        //{
-        //    if(roomTypeName=="SQUARE")
-        //    {
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(0).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(1).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(2).gameObject.SetActive(true);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(3).gameObject.SetActive(false);
-        //    }
-        //    else if(roomTypeName=="ROOM")
-        //    {
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(0).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(1).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(2).gameObject.SetActive(true);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(3).gameObject.SetActive(false);
-        //    }
-        //    needChange3 = false;
-        //}
-        //else if(needChange4)
-        //{
-        //    if(roomTypeName=="SQUARE")
-        //    {
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(0).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(1).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(2).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForSquare/Cylinders").transform.GetChild(3).gameObject.SetActive(true);
-        //    }
-        //    else if(roomTypeName=="ROOM")
-        //    {
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(0).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(1).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(2).gameObject.SetActive(false);
-        //        GameObject.Find("Terrain/TilingObstaclesForRoom/Cylinders").transform.GetChild(3).gameObject.SetActive(true);
-        //    }
-        //    needChange4 = false;
-        //}
 
         UpdateCurrentUserState();
         CalculateStateChanges();

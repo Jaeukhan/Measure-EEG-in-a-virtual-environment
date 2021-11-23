@@ -318,6 +318,7 @@ namespace Vrwave
             StreamWriter outStream = System.IO.File.CreateText(filePath);
             outStream.WriteLine(sb);
             outStream.Close();
+            saveDatas.Initialize();
             // walkingTest.WalkingTestSave();
             // string resetpath = Path.Combine("Assets/WaveResults", "Resettime" + DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
             // StreamWriter outStream2 = System.IO.File.CreateText(resetpath);
@@ -361,6 +362,7 @@ namespace Vrwave
             StreamWriter outStream = System.IO.File.CreateText(filePath);
             outStream.WriteLine(sb);
             outStream.Close();
+            saveDatas.Initialize();
         }
 
         public void GetRedirectManager()

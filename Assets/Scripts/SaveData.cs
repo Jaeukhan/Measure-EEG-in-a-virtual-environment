@@ -75,6 +75,10 @@ namespace Vrwave {
             string filePath = Path.Combine("Assets/WaveResults", name + "_" + DateTime.Now.ToString("yyyy-MM-dd") + ".json");
             File.WriteAllText(filePath, JsonUtility.ToJson(eEGdatas));
         }
+        public void Initialize()
+        {
+            eEGdatas = new EEGdatas();
+        }
  
         public class EEGdatas
         { 
