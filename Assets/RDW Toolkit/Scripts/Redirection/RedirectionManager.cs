@@ -271,20 +271,20 @@ public class RedirectionManager : MonoBehaviour {
            
         }
 
-        else if(Time.time/ timefactor >= 11f && Time.time/timefactor < 41f)
-        {
-            if (oneTime - previousOneTime > 0)
-            {
-                // Beep
-                Debug.Log("도세요");
+        // else if(Time.time/ timefactor >= 11f && Time.time/timefactor < 41f)
+        // {
+        //     if (oneTime - previousOneTime > 0)
+        //     {
+        //         // Beep
+        //         Debug.Log("도세요");
 
-                //Debug.Log(oneTime);
-                previousOneTime = oneTime;
+        //         //Debug.Log(oneTime);
+        //         previousOneTime = oneTime;
 
-            }
-        }
+        //     }
+        // }
 
-        else if (Time.time / timefactor >=42)
+        else if (Time.time / timefactor >=14)
         {
             visualizerManager.exitstate = true;
             if (actionTest.GetoddballCount())

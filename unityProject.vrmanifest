@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.9floor_eeg.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\user\\Documents\\GitHub\\Walking_EEG2\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\cgna\\Documents\\GitHub\\Walking_EEG2\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "9floor_eeg [Testing]"
