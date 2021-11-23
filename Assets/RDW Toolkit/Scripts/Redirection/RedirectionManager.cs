@@ -286,7 +286,7 @@ public class RedirectionManager : MonoBehaviour {
 
         else if (Time.time / timefactor >=42)
         {
-            visualizerManager.EEG2Csv(ROT_GAIN.ToString());
+            visualizerManager.exitstate = true;
             if (actionTest.GetoddballCount())
             {
                 Debug.Log("가상환경이 적게돌아감");

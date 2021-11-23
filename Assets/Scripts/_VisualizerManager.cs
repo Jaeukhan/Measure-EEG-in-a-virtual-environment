@@ -193,7 +193,6 @@ namespace Vrwave
                 Debug.Log("writing");
                 //Write();
                 EEG2Csv();
-                pushCheckingTime.Save();
                 savestate = false;
                 writing = false;
                 exitstate = false;
