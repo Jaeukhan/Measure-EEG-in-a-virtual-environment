@@ -31,6 +31,7 @@ namespace Vrwave
         [HideInInspector]
         PushCheckingTime pushCheckingTime;
         public WalkingTest walkingTest;
+        public string username;
         public static bool savestate = false;
         public bool writing = false;
         public bool exitstate = false;
@@ -45,6 +46,7 @@ namespace Vrwave
         private EEGRawSignal rawSignalData;
         private int index = 0;
         // StringBuilder timersb = new StringBuilder();
+        private string eegdirectory = "Assets/WaveResults";
 
 
 
@@ -61,6 +63,7 @@ namespace Vrwave
 
         void Awake()
         {
+            eegdirectory = $"Assets/WaveResults/{username}";
             GetRedirectManager();
             GetSimulatorManager();
             GetCheckingTime();
@@ -192,7 +195,8 @@ namespace Vrwave
             {
                 Debug.Log("writing");
                 //Write();
-                EEG2Csv();
+                float rot = redirectionManager.ROT_GAIN * 10;
+                EEG2Csv(rot.ToString());
                 savestate = false;
                 writing = false;
                 exitstate = false;
@@ -357,9 +361,15 @@ namespace Vrwave
             {
                 sb.AppendLine(string.Join(delimiter, output[index]));
             }
-            string filePath = Path.Combine("Assets/WaveResults", "EEG_"+name+'_' + DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
-            StreamWriter outStream = System.IO.File.CreateText(filePath);
+
+            DirectoryInfo di = new DirectoryInfo(eegdirectory);
+            if(di.Exists == false)
+            {
+                di.Create();
+            }
+            StreamWriter outStream = new StreamWriter(eegdirectory+"/EEG_"+name+'_'+ DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
             outStream.WriteLine(sb);
+            outStream.Flush();
             outStream.Close();
             saveDatas.Initialize();
         }

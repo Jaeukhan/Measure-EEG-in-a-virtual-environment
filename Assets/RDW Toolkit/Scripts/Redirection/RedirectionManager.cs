@@ -13,7 +13,7 @@ public class RedirectionManager : MonoBehaviour {
 
     [Tooltip("Select if you wish to run simulation from commandline in Unity batchmode.")]
     [HideInInspector]
-    public bool runInTestMode = false;
+    public bool runInTestMode = true;
 
     [Tooltip("How user movement is controlled.")]
     public MovementController MOVEMENT_CONTROLLER;
@@ -131,6 +131,7 @@ public class RedirectionManager : MonoBehaviour {
     private float timefactor = 1.0f;
     private bool breaktime = false;
     private float[] randrot;
+    private bool beepbool = true;
 
     //[HideInInspector]
     //bool needChange1 = false;
@@ -258,35 +259,29 @@ public class RedirectionManager : MonoBehaviour {
         {
             if (baselinesecond % 3 == 0 && baselinesecond != 0)
             {
-                if(baselinesecond>=11)
+                if(baselinesecond>=6)
                 {
-                    beep.Play();
+                    if(beepbool ==true)
+                    {
+                        beep.Play();
+                        Debug.Log("도세요");
+                    }
+                       
                 }
                 oneTime++;
             }
-            if ((Time.time / timefactor) >= 6f && (Time.time / timefactor) < 11f)
+            if (baselinesecond >= 4f && baselinesecond < 6f)
             {
                 Debug.Log("준비하세요");
             }
            
         }
 
-        // else if(Time.time/ timefactor >= 11f && Time.time/timefactor < 41f)
-        // {
-        //     if (oneTime - previousOneTime > 0)
-        //     {
-        //         // Beep
-        //         Debug.Log("도세요");
 
-        //         //Debug.Log(oneTime);
-        //         previousOneTime = oneTime;
-
-        //     }
-        // }
-
-        else if (Time.time / timefactor >=14)
+        else if (Time.time / timefactor >=36)
         {
             visualizerManager.exitstate = true;
+            beepbool = false;
             if (actionTest.GetoddballCount())
             {
                 Debug.Log("가상환경이 적게돌아감");
