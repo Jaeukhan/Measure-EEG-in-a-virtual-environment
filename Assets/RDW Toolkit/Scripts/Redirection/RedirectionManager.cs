@@ -34,14 +34,20 @@ public class RedirectionManager : MonoBehaviour {
     [Range(-0.2F, 1.0F)]
     public float MIN_ROT_GAIN = 0.67F;// -0.2F;
 
-    [Tooltip("rotation gain applied")]
-
-    [Range(-5.0F, 5.0F)]
-    public float ROT_GAIN = 0.67F;// -0.2F;
-
     [Tooltip("Radius applied by curvature gain")]
     [Range(1, 23)]
     public float CURVATURE_RADIUS = 7.5F;
+
+    [Tooltip("rotation gain applied")]
+
+    [Range(0.5F, 1.5F)]
+    public float ROT_GAIN = 0.67F;// -0.2F;
+    [Range(0.5F, 1.5F)]
+    public float change_rotgain = 0.67F;// -0.2F;
+
+    public int changeorder = 7;
+
+
 
     [Tooltip("The game object that is being physically tracked (probably user's head)")]
     public Transform headTransform;
@@ -119,6 +125,8 @@ public class RedirectionManager : MonoBehaviour {
 
     [HideInInspector]
     public string roomTypeName;
+    [HideInInspector]
+    public float startTime; 
 
     public GeometryInfo.SpaceShape spaceShape;
 
@@ -132,6 +140,8 @@ public class RedirectionManager : MonoBehaviour {
     private bool breaktime = false;
     private float[] randrot;
     private bool beepbool = true;
+    private bool startexp = true;
+  
 
     //[HideInInspector]
     //bool needChange1 = false;
@@ -246,92 +256,60 @@ public class RedirectionManager : MonoBehaviour {
         }
 
 	}
+    void StartTimeSet()
+    {
+        if(startexp)
+        {
+            startTime = Time.time;
+        }
+        startexp = false;
+    }
 	
-	// Update is called once per frame
-	// void Update () {
+    void BeepSoundExp()
+    {
+        if(_VisualizerManager.savestate)
+        {
+            StartTimeSet();
+            if ((int)((Time.time - startTime)/ timefactor) - baselinesecond > 0)
+            {
+                if (baselinesecond % 5 == 0 && baselinesecond != 0)
+                {
+                        if (beepbool == true)
+                        {
+                            beep.Play(); //4초부터 시작함. 4 7 10 13 16 19 22 25 28 31 34
+                            Debug.Log("도세요");
+                        }
+                    oneTime++;
+                }
+                if (baselinesecond >= 1f && baselinesecond < 3f)
+                {
+                    Debug.Log("준비하세요");
+                }
+                if(baselinesecond >= 5 * changeorder + 1)
+                {
+                    ROT_GAIN = change_rotgain;
+                }
 
-	// }
+            }
+
+            else if ((Time.time -startTime)/ timefactor >= 55)
+            {
+                visualizerManager.exitstate = true;
+                beepbool = false;
+                if (actionTest.GetoddballCount())
+                {
+                    Debug.Log("가상환경이 적게돌아감");
+                }
+            }
+            Debug.Log((Time.time - startTime) / timefactor);
+            baselinesecond = (int)((Time.time-startTime) / timefactor);
+        }
+    }
 
     void FixedUpdate()
     {
-       
-        if ((int)(Time.time/ timefactor) - baselinesecond > 0)
-        {
-            if (baselinesecond % 3 == 0 && baselinesecond != 0)
-            {
-                if(baselinesecond>=6)
-                {
-                    if(beepbool ==true)
-                    {
-                        beep.Play();
-                        Debug.Log("도세요");
-                    }
-                       
-                }
-                oneTime++;
-            }
-            if (baselinesecond >= 4f && baselinesecond < 6f)
-            {
-                Debug.Log("준비하세요");
-            }
-           
-        }
 
-
-        else if (Time.time / timefactor >=36)
-        {
-            visualizerManager.exitstate = true;
-            beepbool = false;
-            if (actionTest.GetoddballCount())
-            {
-                Debug.Log("가상환경이 적게돌아감");
-            }
-        }
-
-
-
-
-
-        //if (Time.time / timefactor >= 30f + 11f && Time.time / timefactor < 70f)
-        //{
-
-        //    if (oneTime - previousOneTime > 0)
-        //    {
-        //        // Beep
-        //        Debug.Log("도세요");
-        //        //Debug.Log(oneTime);
-        //        previousOneTime = oneTime;
-
-        //    }
-
-        //    if(oneTime%2==0 && (oneTime - previousOneTime2 > 0))
-        //    {
-        //        ROT_GAIN = ROT_GAIN + 0.1f;
-        //        //Debug.Log(ROT_GAIN);
-        //        previousOneTime2 = oneTime;
-        //    }
-        //}
-
-        //else if(Time.time / timefactor >=70f && Time.time/timefactor < 101f)
-        //{
-        //    if (oneTime - previousOneTime > 0)
-        //    {
-        //        // Beep
-        //        Debug.Log("도세요");
-        //        // Debug.Log(oneTime);
-        //        previousOneTime = oneTime;
-
-        //    }
-        //   // do nothing
-        //}
-        //else if(Time.time/timefactor > 101f)
-        //{
-        //    visualizerManager.EEG2Csv();
-        //    ExitGame();
-        //}
-
-
-        baselinesecond = (int)(Time.time / timefactor);
+        BeepSoundExp();
 
         UpdateCurrentUserState();
         CalculateStateChanges();

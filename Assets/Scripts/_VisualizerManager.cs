@@ -19,6 +19,7 @@ namespace Vrwave
         public Transform VRCamera;
 
         [Header("Raw Signals")]
+        public LineChart RawSignalCharts;
         public SaveData[] saveDatas;
         [Header("Action Test")]
         public ActionTest actionTest;
@@ -103,22 +104,18 @@ namespace Vrwave
         }
 
 
-
-        // Data Subscription
-        void OnReceiveEEGSensorStatus(EEGSensor sensorStatusData)
-        {
-            this.sensorStatusData = sensorStatusData;
-        }
-
         void OnReceiveEEGRawSignals(EEGRawSignal rawSignalData)
         {
-            if (!writing) return;
-            savestate = true;
             int numChannel = System.Enum.GetValues(typeof(EEGSensorID)).Length;
             for (int i = 0; i < numChannel; i++)
             {
                 saveDatas[i].SetValue(rawSignalData.FilteredRawSignal((EEGSensorID)i));
             }
+            PushWrite();
+        }
+        public void PushWrite()
+        {
+            if (writing) savestate = true;
         }
 
         void FixedUpdate()

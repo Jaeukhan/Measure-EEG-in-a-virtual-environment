@@ -8,19 +8,73 @@ using Looxid.Link;
 namespace Vrwave {
     public class SaveData : MonoBehaviour
     {
+        public int Width = 265;
+        public int Height = 90;
+        public bool center_is_zero = true;
 
         private EEGdatas eEGdatas = new EEGdatas();
         private double[] datalist;
         private bool saving = true;
+        private LineRenderer line;
         //private double[] datalist = new double[2000];
         // Start is called before the first frame update
-
+        private void OnEnable()
+        {
+            line = GetComponent<LineRenderer>();
+            StartCoroutine(DrawChart());
+        }
         void Update()
         {
             if (_VisualizerManager.savestate && saving)
             {
                 StartCoroutine(eegDataAppend());
                 saving = false;
+            }
+            
+        }
+        
+
+        IEnumerator DrawChart()
+        {
+            while (this.gameObject.activeSelf)
+            {
+                yield return new WaitForSeconds(0.1f);
+
+                if (datalist != null)
+                {
+                    if (datalist.Length > 1)
+                    {
+                        line.positionCount = datalist.Length;
+                        float xDist = (float)Width / (float)(datalist.Length - 1);
+
+                        for (int x = 0; x < datalist.Length; x++)
+                        {
+                            int dataHeight = Height / 2;
+
+                            if (x < datalist.Length)
+                            {
+                                if (double.IsNaN(datalist[x]))
+                                {
+                                    dataHeight = 0;
+                                }
+                                else
+                                {
+                                    if (center_is_zero)
+                                    {
+                                        dataHeight = Mathf.FloorToInt((float)(datalist[x] + 0.5) * (float)Height);
+                                    }
+                                    else
+                                    {
+                                        dataHeight = Mathf.FloorToInt((float)datalist[x] * (float)Height);
+                                    }
+                                }
+                            }
+
+                            float pos_x = xDist * (float)x;
+                            line.SetPosition(x, new Vector3(pos_x, dataHeight, 0.0f));
+                        }
+                    }
+                }
             }
         }
         // Update is called once per frame
