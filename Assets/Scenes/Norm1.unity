@@ -2368,7 +2368,8 @@ AudioSource:
   m_GameObject: {fileID: 1061127996}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243366450046692526, guid: ec12f7772c03e4c4c9e4c2f1643595ad,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: d02168b7a7279c54eb10e8a1e5c37075, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -2910,7 +2911,7 @@ MonoBehaviour:
   - {fileID: 3559292949516869128}
   actionTest: {fileID: 1220012787}
   walkingTest: {fileID: 5670907110489250636}
-  username: su
+  username: sb
   writing: 0
   exitstate: 0
   display_num: 5
@@ -11374,9 +11375,7 @@ MonoBehaviour:
   MAX_ROT_GAIN: 0
   MIN_ROT_GAIN: -0.2
   CURVATURE_RADIUS: 1
-  ROT_GAIN: 1
-  change_rotgain: 1.1
-  changeorder: 4
+  ROT_GAIN: 1.1
   headTransform: {fileID: 5670907110489450629}
   useManualTime: 0
   targetFPS: 10

@@ -43,9 +43,9 @@ public class RedirectionManager : MonoBehaviour {
     [Range(0.5F, 1.5F)]
     public float ROT_GAIN = 0.67F;// -0.2F;
     [Range(0.5F, 1.5F)]
-    public float change_rotgain = 0.67F;// -0.2F;
+    //public float change_rotgain = 0.67F;// -0.2F;
 
-    public int changeorder = 7;
+    //public int changeorder = 7;
 
 
 
@@ -271,12 +271,20 @@ public class RedirectionManager : MonoBehaviour {
         {
             StartTimeSet();
             if ((int)((Time.time - startTime)/ timefactor) - baselinesecond > 0)
-            {
+            {   
+                if (baselinesecond == 0)
+                {
+                    if (beepbool == true)
+                    {
+                        beep.Play(); //4초부터 시작함. 6 11 16 21
+                        Debug.Log("도세요");
+                    }
+                }
                 if (baselinesecond % 5 == 0 && baselinesecond != 0)
                 {
                         if (beepbool == true)
                         {
-                            beep.Play(); //4초부터 시작함. 4 7 10 13 16 19 22 25 28 31 34
+                            beep.Play(); //4초부터 시작함. 6 11 16 21
                             Debug.Log("도세요");
                         }
                     oneTime++;
@@ -285,14 +293,10 @@ public class RedirectionManager : MonoBehaviour {
                 {
                     Debug.Log("준비하세요");
                 }
-                if(baselinesecond >= 5 * changeorder + 1)
-                {
-                    ROT_GAIN = change_rotgain;
-                }
 
             }
 
-            else if ((Time.time -startTime)/ timefactor >= 55)
+            else if ((Time.time -startTime)/ timefactor >= 181)
             {
                 visualizerManager.exitstate = true;
                 beepbool = false;
@@ -306,10 +310,43 @@ public class RedirectionManager : MonoBehaviour {
         }
     }
 
+    void chairroate()
+    {
+        if (_VisualizerManager.savestate)
+        {
+            StartTimeSet();
+            if ((int)((Time.time - startTime) / timefactor) - baselinesecond > 0)
+            {
+                if (baselinesecond == 2)
+                {
+                    if (beepbool == true)
+                    {
+                        beep.Play();
+                        Debug.Log("도세요");
+                    }
+                }
+            }
+            //Debug.Log(headTransform.transform.rotation.y);
+            if (headTransform.transform.rotation.y >= 0.9)
+            {
+                visualizerManager.exitstate = true;
+                beepbool = false;
+                if (actionTest.GetoddballCount())
+                {
+                    Debug.Log("가상환경이 적게돌아감");
+                }
+            }
+
+            baselinesecond = (int)((Time.time - startTime) / timefactor);
+        }
+        
+    }
+
     void FixedUpdate()
     {
 
-        BeepSoundExp();
+        //BeepSoundExp();
+        chairroate();
 
         UpdateCurrentUserState();
         CalculateStateChanges();
