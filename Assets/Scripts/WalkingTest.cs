@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using System.IO;
 using System;
+using Vrwave;
 
 public class WalkingTest : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class WalkingTest : MonoBehaviour
 
     [SerializeField]
     private GameObject tracker2;
+    [HideInInspector]
+    public RedirectionManager redirectionManager;
+    [HideInInspector]
+    public _VisualizerManager visualizerManager;
+
 
 
     private bool bInit = false;
@@ -23,6 +29,7 @@ public class WalkingTest : MonoBehaviour
     void Start()
     {
         initOffset = Mathf.Abs(tracker1.transform.position.y - tracker2.transform.position.y);
+        // GetRedirectManager();
     }
     private void Update()
     {
@@ -42,35 +49,39 @@ public class WalkingTest : MonoBehaviour
     {
         // if (bInit)
         // {
-            float height_diff = Mathf.Abs(tracker1.transform.position.y - tracker2.transform.position.y) - initOffset;
-
-            if (height_diff >= 0.01f)
+        if(_VisualizerManager.savestate)
+        {
+           
+        float height_diff = Mathf.Abs(tracker1.transform.position.y - tracker2.transform.position.y) - initOffset;
+        if (height_diff >= 0.01f)
+        {
+            if (bswitch)
             {
-                if (bswitch)
-                {
-                    bswitch = false;
-                    sb.AppendLine();
-                    sb.AppendLine();
-                    sb.AppendLine();
-                }
-
-                sb.Append(string.Format("{0:f4}", height_diff) + ",");
-                Debug.Log("jeogjt");
+                bswitch = false;
+                sb.AppendLine();
+                sb.AppendLine();
+                sb.AppendLine();
             }
-            else
-            {
-                if (!bswitch)
-                {
-                    bswitch = true;
-                    sb.AppendLine();
-                    sb.AppendLine();
-                    sb.AppendLine();
-                }
 
-                sb.Append(string.Format("{0:f4}", height_diff) + ",");
-                Debug.Log("jeogjt");
-            }
+            sb.Append(string.Format("{0:f4}", height_diff) + ",");
+            Debug.Log("jeogjt");
         }
+        else
+        {
+            if (!bswitch)
+            {
+                bswitch = true;
+                sb.AppendLine();
+                sb.AppendLine();
+                sb.AppendLine();
+            }
+
+            sb.Append(string.Format("{0:f4}", height_diff) + ",");
+            Debug.Log("jeogjt");
+        }
+        }
+             
+    }
 
     // }
     public void WalkingTestSave()
@@ -81,4 +92,14 @@ public class WalkingTest : MonoBehaviour
         outStream.WriteLine(sb);
         outStream.Close();
     }
+
+    public void GetRedirectManager()
+    {
+        redirectionManager = GameObject.Find("Redirected User").transform.gameObject.GetComponent<RedirectionManager>();
+    }
+    public void LooxidManager()
+    {
+        visualizerManager = GameObject.Find("LooxidManager").transform.gameObject.GetComponent<_VisualizerManager>();
+    }
+
 }

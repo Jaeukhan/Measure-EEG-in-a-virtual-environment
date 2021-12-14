@@ -127,16 +127,19 @@ public class RedirectionManager : MonoBehaviour {
     public string roomTypeName;
     [HideInInspector]
     public float startTime; 
+    [HideInInspector]
+    public int baselinesecond = 0;
+    [HideInInspector]
+    public float timefactor = 1.0f;
 
     public GeometryInfo.SpaceShape spaceShape;
 
     public ActionTest actionTest;
     private bool initialbase = false;
-    private int baselinesecond = 0;
+
     private int oneTime = -3;
     private int previousOneTime = 0;
     private int previousOneTime2 = 0;
-    private float timefactor = 1.0f;
     private bool breaktime = false;
     private float[] randrot;
     private bool beepbool = true;

@@ -8947,13 +8947,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5670907110489250635}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5e642853bc0ccc4fa63537c48a217d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tracker1: {fileID: 1800451783}
   tracker2: {fileID: 66427771}
+  redirectionManager: {fileID: 0}
+  visualizerManager: {fileID: 0}
 --- !u!1 &5670907110489254379
 GameObject:
   m_ObjectHideFlags: 0
@@ -11414,6 +11416,8 @@ MonoBehaviour:
   controllerTriggered: 0
   roomTypeName: 
   startTime: 0
+  baselinesecond: 0
+  timefactor: 1
   spaceShape: 0
   actionTest: {fileID: 1220012787}
 --- !u!114 &7584979000720899623
