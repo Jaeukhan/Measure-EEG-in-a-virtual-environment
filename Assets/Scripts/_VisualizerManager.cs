@@ -385,15 +385,15 @@ namespace Vrwave
         }
         public void GainChangeExperiment()
         {
-            if(index == 1)
-            {
-                simulationManager.SetCondAlogorithm("S2C");
-                redirectionManager.MAX_TRANS_GAIN = 0.26f;
-                redirectionManager.MIN_TRANS_GAIN = -0.14f;
-                redirectionManager.MAX_ROT_GAIN = 1.49f;
-                redirectionManager.MIN_ROT_GAIN = 0.8f;
-                redirectionManager.CURVATURE_RADIUS = 6.4f;
-            }
+            // if(index == 1)
+            // {
+            //     simulationManager.SetCondAlogorithm("S2C");
+            //     redirectionManager.MAX_TRANS_GAIN = 0.26f;
+            //     redirectionManager.MIN_TRANS_GAIN = -0.14f;
+            //     redirectionManager.MAX_ROT_GAIN = 1.49f;
+            //     redirectionManager.MIN_ROT_GAIN = 0.8f;
+            //     redirectionManager.CURVATURE_RADIUS = 6.4f;
+            // }
             //if(index == 2)
             //{
             //    simulationManager.SetCondAlogorithm("S2C");

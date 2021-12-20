@@ -251,7 +251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &66427772
 Transform:
   m_ObjectHideFlags: 0
@@ -2911,7 +2911,7 @@ MonoBehaviour:
   - {fileID: 3559292949516869128}
   actionTest: {fileID: 1220012787}
   walkingTest: {fileID: 5670907110489250636}
-  username: sb
+  username: dh
   writing: 0
   exitstate: 0
   display_num: 5
@@ -3339,7 +3339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1800451784
 Transform:
   m_ObjectHideFlags: 0
@@ -11377,7 +11377,7 @@ MonoBehaviour:
   MAX_ROT_GAIN: 0
   MIN_ROT_GAIN: -0.2
   CURVATURE_RADIUS: 1
-  ROT_GAIN: 1.1
+  ROT_GAIN: 1
   headTransform: {fileID: 5670907110489450629}
   useManualTime: 0
   targetFPS: 10

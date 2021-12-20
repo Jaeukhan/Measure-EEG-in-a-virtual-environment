@@ -537,26 +537,26 @@ public class SimulationManager : MonoBehaviour {
         waypoint.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(0, 0.12f, 0));
     }
     
-    public void SetCondAlogorithm(string s)
-    {
-        System.Type redirectorType = null;
-        System.Type resetterType = null;
-        if (s == "S2C")
-        {
-            condAlgorithm = AlgorithmChoice.S2C;
-            redirectionManager.gameObject.AddComponent<S2CRedirector>();
-            redirectorType = typeof(S2CRedirector);
-            algorithmName = "S2C";
-        }
-        else if(s == "None")
-        {
-            condAlgorithm = AlgorithmChoice.None;
-            redirectorType = typeof(NullRedirector);
-        }
-        GenerateAllExperimentSetups();
-        // Determine Initial Configurations If Random
-        determineInitialConfigurations(ref experimentSetups);
-    }
+    // public void SetCondAlogorithm(string s)
+    // {
+    //     System.Type redirectorType = null;
+    //     System.Type resetterType = null;
+    //     if (s == "S2C")
+    //     {
+    //         condAlgorithm = AlgorithmChoice.S2C;
+    //         redirectionManager.gameObject.AddComponent<S2CRedirector>();
+    //         redirectorType = typeof(S2CRedirector);
+    //         algorithmName = "S2C";
+    //     }
+    //     else if(s == "None")
+    //     {
+    //         condAlgorithm = AlgorithmChoice.None;
+    //         redirectorType = typeof(NullRedirector);
+    //     }
+    //     GenerateAllExperimentSetups();
+    //     // Determine Initial Configurations If Random
+    //     determineInitialConfigurations(ref experimentSetups);
+    // }
     public void Initialize()
     {
         redirectionManager.runInTestMode = runInSimulationMode;
