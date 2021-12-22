@@ -110,9 +110,9 @@ public class RotRedirector : Redirector {
 
         rotationFromRotationGain = (deltaDir * (redirectionManager.ROT_GAIN-1));
 
-        float finalRotation = (1.0f - SMOOTHING_FACTOR) * lastRotationApplied + SMOOTHING_FACTOR * rotationFromRotationGain;
-        lastRotationApplied = finalRotation;
-        InjectRotation(lastRotationApplied);
+        // float finalRotation = (1.0f - SMOOTHING_FACTOR) * lastRotationApplied + SMOOTHING_FACTOR * rotationFromRotationGain;
+        // lastRotationApplied = finalRotation;
+        InjectRotation(rotationFromRotationGain);
 
     }
     // public override void ApplyRedirection()

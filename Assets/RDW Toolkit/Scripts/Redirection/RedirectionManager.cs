@@ -40,9 +40,9 @@ public class RedirectionManager : MonoBehaviour {
 
     [Tooltip("rotation gain applied")]
 
-    [Range(0.5F, 1.5F)]
+    [Range(0.5F, 2.0F)]
     public float ROT_GAIN = 0.67F;// -0.2F;
-    [Range(0.5F, 1.5F)]
+    // [Range(0.5F, 2.0F)]
     //public float change_rotgain = 0.67F;// -0.2F;
 
     //public int changeorder = 7;
@@ -318,20 +318,31 @@ public class RedirectionManager : MonoBehaviour {
         if (_VisualizerManager.savestate)
         {
             StartTimeSet();
-            if ((int)((Time.time - startTime) / timefactor) - baselinesecond > 0)
+            // if ((int)((Time.time - startTime) / timefactor) - baselinesecond > 0)
+            // {
+            //     if (baselinesecond == 2)
+            //     {
+            //         if (beepbool == true)
+            //         {
+            //             beep.Play();
+            //             Debug.Log("도세요");
+            //         }
+            //     }
+            // }
+            // //90도 돌아가면 stop
+            // if (headTransform.transform.rotation.y >= 0.9)
+            // {
+            //     visualizerManager.exitstate = true;
+            //     beepbool = false;
+            //     if (actionTest.GetoddballCount())
+            //     {
+            //         Debug.Log("가상환경이 적게돌아감");
+            //     }
+            // }
+
+            if ((Time.time -startTime)/ timefactor >= 33)
             {
-                if (baselinesecond == 2)
-                {
-                    if (beepbool == true)
-                    {
-                        beep.Play();
-                        Debug.Log("도세요");
-                    }
-                }
-            }
-            //Debug.Log(headTransform.transform.rotation.y);
-            if (headTransform.transform.rotation.y >= 0.9)
-            {
+                beep.Play();
                 visualizerManager.exitstate = true;
                 beepbool = false;
                 if (actionTest.GetoddballCount())

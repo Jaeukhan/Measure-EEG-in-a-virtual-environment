@@ -36,9 +36,10 @@ namespace Vrwave
         public static bool savestate = false;
         public bool writing = false;
         public bool exitstate = false;
-        public int display_num = 10;
+        // public int display_num = 10;
 
-        public bool oddballevent = true;
+        // public bool oddballevent = true;
+        public int exporder;
 
         private float starttime = 0;
         private const int linkFequency = 5;
@@ -128,53 +129,53 @@ namespace Vrwave
             //}
 
         }
-        IEnumerator Displaytarget()
-        {
-            while (true)
-            {
-                if (RedirectionManager.usingreset)
-                {
-                    yield return new WaitForSeconds(1.1f);
-                }
-                waitingTime = UnityEngine.Random.Range(0.5f, 1.5f);//0.5~1.5초 사이동안 나옴
-                yield return new WaitForSeconds(waitingTime);
+        // IEnumerator Displaytarget()
+        // {
+        //     while (true)
+        //     {
+        //         if (RedirectionManager.usingreset)
+        //         {
+        //             yield return new WaitForSeconds(1.1f);
+        //         }
+        //         waitingTime = UnityEngine.Random.Range(0.5f, 1.5f);//0.5~1.5초 사이동안 나옴
+        //         yield return new WaitForSeconds(waitingTime);
 
 
-                if (displayOrder[ordernum] == 0)
-                {
-                    GameObject.Find("targets").transform.GetChild(0).gameObject.SetActive(true);//standard
+        //         if (displayOrder[ordernum] == 0)
+        //         {
+        //             GameObject.Find("targets").transform.GetChild(0).gameObject.SetActive(true);//standard
 
-                    yield return new WaitForSeconds(0.5f);
-                    GameObject.Find("targets").transform.GetChild(0).gameObject.SetActive(false);//standar
-                    if (actionTest.GetoddballCount())
-                    {
-                        Debug.Log(timer);
-                        Debug.Log(ordernum + 1);
-                    }
-                }
-                else if (displayOrder[ordernum] == 1)
-                {
-                    GameObject.Find("targets").transform.GetChild(1).gameObject.SetActive(true); //oddball
+        //             yield return new WaitForSeconds(0.5f);
+        //             GameObject.Find("targets").transform.GetChild(0).gameObject.SetActive(false);//standar
+        //             if (actionTest.GetoddballCount())
+        //             {
+        //                 Debug.Log(timer);
+        //                 Debug.Log(ordernum + 1);
+        //             }
+        //         }
+        //         else if (displayOrder[ordernum] == 1)
+        //         {
+        //             GameObject.Find("targets").transform.GetChild(1).gameObject.SetActive(true); //oddball
 
-                    yield return new WaitForSeconds(0.5f);
-                    GameObject.Find("targets").transform.GetChild(1).gameObject.SetActive(false);//oddball     
-                    if (actionTest.GetoddballCount())
-                    {
-                        Debug.Log(timer);
-                        Debug.Log(ordernum + 1);
-                    }
+        //             yield return new WaitForSeconds(0.5f);
+        //             GameObject.Find("targets").transform.GetChild(1).gameObject.SetActive(false);//oddball     
+        //             if (actionTest.GetoddballCount())
+        //             {
+        //                 Debug.Log(timer);
+        //                 Debug.Log(ordernum + 1);
+        //             }
 
-                }
+        //         }
 
-                ordernum++;
-                if (ordernum == display_num)
-                {
-                    ordernum = 0;
-                    exitstate = true;
-                    break;
-                }
-            }
-        }
+        //         ordernum++;
+        //         if (ordernum == display_num)
+        //         {
+        //             ordernum = 0;
+        //             exitstate = true;
+        //             break;
+        //         }
+        //     }
+        // }
 
 
         void Update()
@@ -364,7 +365,7 @@ namespace Vrwave
             {
                 di.Create();
             }
-            StreamWriter outStream = new StreamWriter(eegdirectory+"/EEG_"+name+'_'+ DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
+            StreamWriter outStream = new StreamWriter(eegdirectory+"/"+exporder+"EEG_"+name+'_'+ DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
             outStream.WriteLine(sb);
             outStream.Flush();
             outStream.Close();
