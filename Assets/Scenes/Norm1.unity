@@ -2893,7 +2893,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416940744}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 628537ecf622e894b8edaec3e3d65712, type: 3}
   m_Name: 
@@ -2914,7 +2914,7 @@ MonoBehaviour:
   username: ju
   writing: 0
   exitstate: 0
-  exporder: 10
+  exporder: g
 --- !u!1 &1459926694
 GameObject:
   m_ObjectHideFlags: 0
@@ -11376,7 +11376,7 @@ MonoBehaviour:
   MAX_ROT_GAIN: 0
   MIN_ROT_GAIN: -0.2
   CURVATURE_RADIUS: 1
-  ROT_GAIN: 2
+  ROT_GAIN: 1
   headTransform: {fileID: 5670907110489450629}
   useManualTime: 0
   targetFPS: 10
