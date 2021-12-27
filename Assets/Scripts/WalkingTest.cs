@@ -19,7 +19,7 @@ public class WalkingTest : MonoBehaviour
     public _VisualizerManager visualizerManager;
 
 
-    
+
     private bool bInit = false;
     private bool bswitch = true;
 
