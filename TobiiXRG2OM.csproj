@@ -36,22 +36,22 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Plugins\Tobii.G2OM.Interop.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Plugins\Tobii.G2OM.UnityExtensionMethods.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\G2OM.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\G2OM_ColliderDataProvider.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\G2OM_Context.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\G2OM_ObjectDistinguisher.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\G2OM_ObjectFinder.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\G2OM_PostTicker.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\IG2OM_ColliderDataProvider.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\IG2OM_Context.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\IG2OM_ObjectDistinguisher.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\IG2OM_ObjectFinder.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\IG2OM_PostTicker.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\Scripts\IGazeFocusable.cs" />
-     <None Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\README.txt" />
-     <None Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\G2OM\TobiiXRG2OM.asmdef" />
+     <Compile Include="Assets\TobiiXR\G2OM\Plugins\Tobii.G2OM.Interop.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Plugins\Tobii.G2OM.UnityExtensionMethods.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\G2OM.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\G2OM_ColliderDataProvider.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\G2OM_Context.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\G2OM_ObjectDistinguisher.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\G2OM_ObjectFinder.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\G2OM_PostTicker.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\IG2OM_ColliderDataProvider.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\IG2OM_Context.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\IG2OM_ObjectDistinguisher.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\IG2OM_ObjectFinder.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\IG2OM_PostTicker.cs" />
+     <Compile Include="Assets\TobiiXR\G2OM\Scripts\IGazeFocusable.cs" />
+     <None Include="Assets\TobiiXR\G2OM\README.txt" />
+     <None Include="Assets\TobiiXR\G2OM\TobiiXRG2OM.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

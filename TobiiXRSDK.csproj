@@ -36,33 +36,33 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\AssemblyInfo.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\TobiiNotificationView.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Graphics\UIGazeButtonGraphics.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Graphics\UIGazeSliderGraphics.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Graphics\UIGazeToggleButtonGraphics.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Touchpad\UITouchpadGazeButton.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Touchpad\UITouchpadGazeSlider.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Touchpad\UITouchpadGazeToggleButton.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Touchpad\UITouchpadSwipeDetector.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Trigger\UITriggerDragDetector.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Trigger\UITriggerGazeButton.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Trigger\UITriggerGazeButtonWithHold.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Trigger\UITriggerGazeSlider.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\Trigger\UITriggerGazeToggleButton.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\UIEventTypes.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\UIGazeCollider.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\UI\UIHighlightAtGaze.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\AssemblyUtils.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\TobiiEula.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\TobiiEulaFile.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\TobiiXR_Lifecycle.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\TobiiXR_Settings.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\TobiiXR.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\TobiiXR_Initializer.cs" />
-     <None Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\Fonts\OFL.txt" />
-     <None Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Helpers\Fonts\MerriweatherSans.txt" />
-     <None Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\TobiiXRAPI.asmdef" />
+     <Compile Include="Assets\TobiiXR\API\AssemblyInfo.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\TobiiNotificationView.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Graphics\UIGazeButtonGraphics.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Graphics\UIGazeSliderGraphics.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Graphics\UIGazeToggleButtonGraphics.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Touchpad\UITouchpadGazeButton.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Touchpad\UITouchpadGazeSlider.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Touchpad\UITouchpadGazeToggleButton.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Touchpad\UITouchpadSwipeDetector.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Trigger\UITriggerDragDetector.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Trigger\UITriggerGazeButton.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Trigger\UITriggerGazeButtonWithHold.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Trigger\UITriggerGazeSlider.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\Trigger\UITriggerGazeToggleButton.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\UIEventTypes.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\UIGazeCollider.cs" />
+     <Compile Include="Assets\TobiiXR\API\Helpers\UI\UIHighlightAtGaze.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\AssemblyUtils.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\TobiiEula.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\TobiiEulaFile.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\TobiiXR_Lifecycle.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\TobiiXR_Settings.cs" />
+     <Compile Include="Assets\TobiiXR\API\TobiiXR.cs" />
+     <Compile Include="Assets\TobiiXR\API\TobiiXR_Initializer.cs" />
+     <None Include="Assets\TobiiXR\API\Helpers\Fonts\OFL.txt" />
+     <None Include="Assets\TobiiXR\API\Helpers\Fonts\MerriweatherSans.txt" />
+     <None Include="Assets\TobiiXR\API\TobiiXRAPI.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -36,15 +36,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\Editor\AssemblyInfo.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\Editor\EditorUtils.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\Editor\IEditorSettings.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\Editor\PathHelper.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\Editor\SerializedPropertyHelper.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\Editor\TobiiEulaCheck.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\Editor\TobiiXR_ExecutionOrderValidator.cs" />
-     <Compile Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\Editor\TobiiXR_SettingsDrawer.cs" />
-     <None Include="Assets\TobiiXRSDK_3.0.1.179\Runtime\API\Internal\Editor\TobiiXRInternalEditor.asmdef" />
+     <Compile Include="Assets\TobiiXR\API\Internal\Editor\AssemblyInfo.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\Editor\EditorUtils.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\Editor\IEditorSettings.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\Editor\PathHelper.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\Editor\SerializedPropertyHelper.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\Editor\TobiiEulaCheck.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\Editor\TobiiXR_ExecutionOrderValidator.cs" />
+     <Compile Include="Assets\TobiiXR\API\Internal\Editor\TobiiXR_SettingsDrawer.cs" />
+     <None Include="Assets\TobiiXR\API\Internal\Editor\TobiiXRInternalEditor.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
