@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.tobii.xr.sdk": {
+      "version": "file:C:/Users/user/Downloads/TobiiXRSDK_3.0.1.179",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.unity.xr.management": "3.2.16"
+      }
+    },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,
@@ -26,6 +34,13 @@
     "com.unity.ide.vscode": {
       "version": "1.2.1",
       "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.subsystemregistration": {
+      "version": "1.0.6",
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -66,19 +81,32 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
-    "com.unity.xr.oculus.standalone": {
-      "version": "2.38.4",
-      "depth": 0,
+    "com.unity.xr.legacyinputhelpers": {
+      "version": "2.1.4",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.xr.openvr.standalone": {
-      "version": "2.0.5",
-      "depth": 0,
+    "com.unity.xr.management": {
+      "version": "3.2.16",
+      "depth": 1,
       "source": "registry",
-      "dependencies": {},
+      "dependencies": {
+        "com.unity.xr.legacyinputhelpers": "2.1.2",
+        "com.unity.subsystemregistration": "1.0.6"
+      },
       "url": "https://packages.unity.com"
+    },
+    "com.valvesoftware.unity.openvr": {
+      "version": "file:C:/Users/user/Downloads/com.valvesoftware.unity.openvr-1.1.4.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.unity.xr.management": "3.2.13",
+        "com.unity.ugui": "1.0.0",
+        "com.unity.xr.legacyinputhelpers": "2.1.4"
+      }
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
