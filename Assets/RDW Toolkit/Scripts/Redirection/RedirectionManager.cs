@@ -4,8 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Redirection;
+using System;
+using System.Text;
+using System.IO;
 using Vrwave;
 using System.Media;
+using Tobii.XR;
+using Tobii.G2OM;
 
 public class RedirectionManager : MonoBehaviour {
 
@@ -57,6 +62,16 @@ public class RedirectionManager : MonoBehaviour {
 
     [Tooltip("Target simulated framerate in auto-pilot mode")]
     public float targetFPS = 60;
+
+    public class Global
+    {
+        public static int repetition = 0;
+        public static int count = 0;
+        public static bool isRunning = false;
+        public static List<int> list;
+        public static float leftPosition, rightPosition;
+        public static string selection = "null";
+    }
 
     public AudioSource beep;
 
@@ -144,6 +159,8 @@ public class RedirectionManager : MonoBehaviour {
     private float[] randrot;
     private bool beepbool = true;
     private bool startexp = true;
+    
+    private StreamWriter sw;
   
 
     //[HideInInspector]
@@ -205,6 +222,8 @@ public class RedirectionManager : MonoBehaviour {
         SetReferenceForSnapshotGenerator();
         SetReferenceForStatisticsLogger();
         SetReferenceForBodyHeadFollower();
+
+        sw = new StreamWriter("data.csv", false);
 
         // The rule is to have RedirectionManager call all "Awake"-like functions that rely on RedirectionManager as an "Initialize" call.
         if(!simulationManager.runInSimulationMode) resetTrigger.Initialize();
@@ -447,6 +466,99 @@ public class RedirectionManager : MonoBehaviour {
             return simulatedTime;
         else
             return Time.time;
+    }
+
+    public void SaveData(float curvature, int repetition, int count)
+    {
+        var eyeTrackingData = TobiiXR.GetEyeTrackingData(TobiiXR_TrackingSpace.World);
+
+        // Check if gaze ray is valid
+        //if (eyeTrackingData.GazeRay.IsValid)
+        //{
+        // The origin of the gaze ray is a 3D point
+        var rayOrigin = eyeTrackingData.GazeRay.Origin;
+
+        // The direction of the gaze ray is a normalized direction vector
+        var rayDirection = eyeTrackingData.GazeRay.Direction;
+        //}
+
+        
+        // The EyeBlinking bool is true when the eye is closed
+        //var isLeftEyeBlinking = eyeTrackingData.IsLeftEyeBlinking;
+        //var isRightEyeBlinking = eyeTrackingData.IsRightEyeBlinking;
+
+        // Using gaze direction in local space makes it easier to apply a local rotation
+        // to your virtual eye balls.
+
+
+        float gazeValid = Convert.ToSingle(eyeTrackingData.GazeRay.IsValid);
+        float convergenceValid = Convert.ToSingle(eyeTrackingData.ConvergenceDistanceIsValid);
+        float leftBlink = Convert.ToSingle(eyeTrackingData.IsLeftEyeBlinking);
+        float rightBlink = Convert.ToSingle(eyeTrackingData.IsRightEyeBlinking);
+
+
+
+        /*
+        if (eyeTrackingData.GazeRay.IsValid == true)
+            gazeValid = 1.0f;
+        else
+            gazeValid = 0.0f;
+
+        if (eyeTrackingData.IsLeftEyeBlinking == true)
+            leftBlink = 1.0f;
+        else
+            leftBlink = 0.0f;
+
+        if (eyeTrackingData.IsRightEyeBlinking == true)
+            rightBlink = 1.0f;
+        else*
+            rightBlink = 0.0f;
+
+
+        if (eyeTrackingData.ConvergenceDistanceIsValid == true)
+            convergenceValid = 1.0f;
+        else
+            convergenceValid = 0.0f;
+        */
+
+        // For social use cases, data in local space may be easier to work with
+        var eyeTrackingDataLocal = TobiiXR.GetEyeTrackingData(TobiiXR_TrackingSpace.Local);
+
+        var rayDirectionLocal = eyeTrackingDataLocal.GazeRay.Direction;
+        var rayOriginLocal = eyeTrackingDataLocal.GazeRay.Origin;
+
+
+
+        float[] info = new float[] { curvature, Convert.ToSingle(repetition), Convert.ToSingle(count) };
+        float[] eye = new float[] { eyeTrackingData.Timestamp, eyeTrackingData.ConvergenceDistance, gazeValid, convergenceValid, rayOrigin.x, rayOrigin.y, rayOrigin.z, rayDirection.x, rayDirection.y, rayDirection.z, leftBlink, rightBlink, rayOriginLocal.x, rayOriginLocal.y, rayOriginLocal.z, rayDirectionLocal.x, rayDirectionLocal.y, rayDirectionLocal.z, };
+
+
+        float[] output = new float[] { simulatedTime, currPos.x, currPos.y, currPos.z, currPosReal.x, currPosReal.y, currPosReal.z, currDir.x, currDir.y, currDir.z, currDirReal.x, currDirReal.y, currDirReal.z };
+        //sw.Write(currPos[0].xcurrPos[1],currPos[);
+        string delimiter = ",";
+        StringBuilder sb = new StringBuilder();
+
+
+        for(int index = 0; index < 3; index++)
+        {
+            sb.Append(info[index].ToString() + delimiter);
+        }
+
+        for (int index = 0; index < 18; index++)
+        {
+            sb.Append(eye[index].ToString() + delimiter);
+        }
+
+        for (int index = 0; index < 13; index++)
+        {
+            sb.Append(output[index].ToString() + delimiter);
+        }
+
+        sb.Append(Global.selection);
+
+
+        sw.WriteLine(sb.ToString());
+
     }
 
     void UpdateDuplicatedBodyPose()

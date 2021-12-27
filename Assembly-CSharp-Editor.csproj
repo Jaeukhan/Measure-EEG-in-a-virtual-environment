@@ -658,6 +658,33 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.XR.Management">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Subsystem.Registration">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.XR.OpenVR">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/Unity.XR.OpenVR.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.XR.OpenVR.Editor">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/Unity.XR.OpenVR.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.XR.Management.Editor">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/Unity.XR.Management.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.SpatialTracking">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpatialTracking">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
@@ -683,6 +710,34 @@
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{CBFC98F2-7DE2-F34E-E871-0F0E273C72AD}</Project>
       <Name>SteamVR_Windows_EditorHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXREditor.csproj">
+      <Project>{C3676C75-B593-EE98-4434-795ED2321536}</Project>
+      <Name>TobiiXREditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXRSDK.csproj">
+      <Project>{911277B6-059F-9154-42E8-C29C9A023647}</Project>
+      <Name>TobiiXRSDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="GazeModifierEditor.csproj">
+      <Project>{E36116D0-4321-2E4B-C11D-C3DF20737E75}</Project>
+      <Name>GazeModifierEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXRCore.csproj">
+      <Project>{160A3CA4-C6A6-68AB-DDA5-39BAC81206FB}</Project>
+      <Name>TobiiXRCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXRInternalEditor.csproj">
+      <Project>{71016DC0-919C-526B-0AD1-942EFAA3B633}</Project>
+      <Name>TobiiXRInternalEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXRG2OM.csproj">
+      <Project>{19B1C4FA-04DA-1373-6B09-EEC7060AF9B6}</Project>
+      <Name>TobiiXRG2OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXRDevTools.csproj">
+      <Project>{3515A2D8-B117-716F-4AA4-92810E042116}</Project>
+      <Name>TobiiXRDevTools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

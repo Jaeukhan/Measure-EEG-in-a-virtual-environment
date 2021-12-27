@@ -117,6 +117,7 @@
      <Compile Include="Assets\RDW Toolkit\Scripts\Simulation\Motion Simulators\SimulatedWalker.cs" />
      <Compile Include="Assets\RDW Toolkit\Scripts\Simulation\SimulationManager.cs" />
      <Compile Include="Assets\RDW Toolkit\Scripts\Simulation\VirtualPathGenerator.cs" />
+     <Compile Include="Assets\Samples\Tobii XR SDK\3.0.1\Getting Started\Scripts\HighlightAtGaze.cs" />
      <Compile Include="Assets\Scripts\ActionTest.cs" />
      <Compile Include="Assets\Scripts\CSVWriter.cs" />
      <Compile Include="Assets\Scripts\CollisonTrigger.cs" />
@@ -130,6 +131,40 @@
      <Compile Include="Assets\Scripts\WalkingTest.cs" />
      <Compile Include="Assets\Scripts\_VisualizerManager.cs" />
      <Compile Include="Assets\Scripts\randomorder.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\SRanipal_Eye.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\SRanipal_EyeData.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\SRanipal_EyeDataType_v1.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\SRanipal_EyeDataType_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\SRanipal_EyeShapeTableDrawer.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\SRanipal_EyeShapeTableDrawer_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\SRanipal_Eye_API.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\SRanipal_Eye_Enums.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\SRanipal_Eye_Framework.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\SRanipal_Eye_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\DartBoard.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_AvatarEyeSample.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_AvatarEyeSample_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_EyeFocusSample.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_EyeFocusSample_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_EyeSettingSample.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_GazeRaySample.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_GazeRaySample_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_MirrorCameraSample_Eye.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_MirrorCameraSample_Eye_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\SRanipal_Lip.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\SRanipal_LipData_v1.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\SRanipal_LipData_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\SRanipal_LipShapeTableDrawer.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\SRanipal_LipShapeTableDrawer_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\SRanipal_Lip_API.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\SRanipal_Lip_Framework.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\SRanipal_Lip_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\Sample\SRanipal_AvatarLipSample.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\Sample\SRanipal_AvatarLipSample_v2.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\Lip\Sample\SRanipal_MirrorCameraSample_Lip.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\SRWorks_Enums.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\SRanipal_API.cs" />
+     <Compile Include="Assets\ViveSR\Scripts\SRanipal_Enums.cs" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-DefaultFont.shader" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Unlit-Detail.shader" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Unlit-TextDetail.shader" />
@@ -140,6 +175,7 @@
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\VariantsSelective\UI\UI-Default.shader" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-DiffuseBumped.shader" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Particle\MK_Particle Add.shader" />
+     <None Include="Assets\ViveSR\Shaders\Unlit-Alpha2Gray.shader" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\VariantsSelective\Sprites\Sprites-Default.shader" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Lit-RefractionDetail.shader" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Normal\MK_Normal-DiffuseBumped.shader" />
@@ -167,6 +203,7 @@
      <None Include="Assets\LooxidLink\Examples\Shaders\Hologram.shader" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\Inc\Copy.hlsl" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-DiffuseBumpSpec.shader" />
+     <None Include="Assets\ViveSR\Shaders\DartBoardShader.shader" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\Effect\MKGlowSM20.shader" />
      <None Include="Assets\LooxidLink\Examples\Plugins\_MK\MKGlowFree\Shaders\Inc\Common.hlsl" />
      <None Include="Assets\LooxidLink\Examples\Shaders\Glass.shader" />
@@ -771,6 +808,33 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.XR.Management">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Subsystem.Registration">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.XR.OpenVR">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/Unity.XR.OpenVR.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.XR.OpenVR.Editor">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/Unity.XR.OpenVR.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.XR.Management.Editor">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/Unity.XR.Management.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.SpatialTracking">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpatialTracking">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+ <HintPath>C:/Users/cgna/Documents/GitHub/ju/Walking_EEG2/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="SteamVR_Input_Editor.csproj">
@@ -792,6 +856,34 @@
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{CBFC98F2-7DE2-F34E-E871-0F0E273C72AD}</Project>
       <Name>SteamVR_Windows_EditorHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXREditor.csproj">
+      <Project>{C3676C75-B593-EE98-4434-795ED2321536}</Project>
+      <Name>TobiiXREditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXRSDK.csproj">
+      <Project>{911277B6-059F-9154-42E8-C29C9A023647}</Project>
+      <Name>TobiiXRSDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="GazeModifierEditor.csproj">
+      <Project>{E36116D0-4321-2E4B-C11D-C3DF20737E75}</Project>
+      <Name>GazeModifierEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXRCore.csproj">
+      <Project>{160A3CA4-C6A6-68AB-DDA5-39BAC81206FB}</Project>
+      <Name>TobiiXRCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXRInternalEditor.csproj">
+      <Project>{71016DC0-919C-526B-0AD1-942EFAA3B633}</Project>
+      <Name>TobiiXRInternalEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXRG2OM.csproj">
+      <Project>{19B1C4FA-04DA-1373-6B09-EEC7060AF9B6}</Project>
+      <Name>TobiiXRG2OM</Name>
+    </ProjectReference>
+    <ProjectReference Include="TobiiXRDevTools.csproj">
+      <Project>{3515A2D8-B117-716F-4AA4-92810E042116}</Project>
+      <Name>TobiiXRDevTools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
