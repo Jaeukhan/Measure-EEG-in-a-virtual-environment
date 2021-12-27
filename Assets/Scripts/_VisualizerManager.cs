@@ -39,7 +39,7 @@ namespace Vrwave
         // public int display_num = 10;
 
         // public bool oddballevent = true;
-        public int exporder;
+        public string exporder;
 
         private float starttime = 0;
         private const int linkFequency = 5;
