@@ -2865,6 +2865,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1416940745}
   - component: {fileID: 1416940746}
+  - component: {fileID: 1416940747}
   m_Layer: 0
   m_Name: LooxidManager
   m_TagString: Untagged
@@ -2915,6 +2916,38 @@ MonoBehaviour:
   writing: 0
   exitstate: 0
   exporder: g
+--- !u!114 &1416940747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416940744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323f6169a2404ef4293c9be9671a1803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings:
+    EyeTrackingFilter: {fileID: 0}
+    StandaloneEyeTrackingProviders:
+    - TypeName: HTCProvider
+    - TypeName: Tobii.XR.TobiiProvider
+    - TypeName: Tobii.XR.NoseDirectionProvider
+    - TypeName: Tobii.XR.MouseProvider
+    AndroidEyeTrackingProviders:
+    - TypeName: Tobii.XR.TobiiProvider
+    - TypeName: Tobii.XR.PicoXRProvider
+    - TypeName: Tobii.XR.NoseDirectionProvider
+    - TypeName: Tobii.XR.MouseProvider
+    LayerMask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    HowLongToKeepCandidatesInSeconds: 1
+    AdvancedEnabled: 0
+    OcumenLicense: 
+    PopupLicenseValidationErrors: 0
+    LicenseAsset: {fileID: 0}
 --- !u!1 &1459926694
 GameObject:
   m_ObjectHideFlags: 0
