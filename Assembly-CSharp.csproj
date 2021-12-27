@@ -98,6 +98,7 @@
      <Compile Include="Assets\RDW Toolkit\Scripts\Simulation\Motion Simulators\SimulatedWalker.cs" />
      <Compile Include="Assets\RDW Toolkit\Scripts\Simulation\SimulationManager.cs" />
      <Compile Include="Assets\RDW Toolkit\Scripts\Simulation\VirtualPathGenerator.cs" />
+     <Compile Include="Assets\Samples\Tobii XR SDK\3.0.1\Getting Started\Scripts\HighlightAtGaze.cs" />
      <Compile Include="Assets\Scripts\ActionTest.cs" />
      <Compile Include="Assets\Scripts\CSVWriter.cs" />
      <Compile Include="Assets\Scripts\CollisonTrigger.cs" />

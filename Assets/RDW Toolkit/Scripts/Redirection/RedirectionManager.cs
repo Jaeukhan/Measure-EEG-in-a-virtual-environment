@@ -467,8 +467,17 @@ public class RedirectionManager : MonoBehaviour {
         else
             return Time.time;
     }
+    void LateUpdate()
+    {
+        if (_VisualizerManager.savestate)
+        {
+            simulatedTime += 1.0f / targetFPS;
+            SaveData(ROT_GAIN, visualizerManager.exporder);
+        }
 
-    public void SaveData(float curvature, int repetition, int count)
+    }
+
+    public void SaveData(float curvature, string ordername) //, int repetition, int count
     {
         var eyeTrackingData = TobiiXR.GetEyeTrackingData(TobiiXR_TrackingSpace.World);
 
@@ -529,7 +538,8 @@ public class RedirectionManager : MonoBehaviour {
 
 
 
-        float[] info = new float[] { curvature, Convert.ToSingle(repetition), Convert.ToSingle(count) };
+        // float[] info = new float[] { curvature, Convert.ToSingle(repetition), Convert.ToSingle(count) };
+        float info = curvature;
         float[] eye = new float[] { eyeTrackingData.Timestamp, eyeTrackingData.ConvergenceDistance, gazeValid, convergenceValid, rayOrigin.x, rayOrigin.y, rayOrigin.z, rayDirection.x, rayDirection.y, rayDirection.z, leftBlink, rightBlink, rayOriginLocal.x, rayOriginLocal.y, rayOriginLocal.z, rayDirectionLocal.x, rayDirectionLocal.y, rayDirectionLocal.z, };
 
 
@@ -539,10 +549,12 @@ public class RedirectionManager : MonoBehaviour {
         StringBuilder sb = new StringBuilder();
 
 
-        for(int index = 0; index < 3; index++)
-        {
-            sb.Append(info[index].ToString() + delimiter);
-        }
+        sb.Append(info.ToString() + delimiter);
+        sb.Append(ordername + delimiter);
+        // for(int index = 0; index < 1; index++)
+        // {
+        //     sb.Append(info[index].ToString() + delimiter);
+        // }
 
         for (int index = 0; index < 18; index++)
         {

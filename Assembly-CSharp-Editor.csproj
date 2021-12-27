@@ -698,41 +698,6 @@
       <Name>SteamVR_Windows_EditorHelper</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="TobiiXREditor.csproj">
-      <Project>{756c67c3-93b5-98ee-4434-795ed2321536}</Project>
-      <Name>TobiiXREditor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="TobiiXRSDK.csproj">
-      <Project>{b6771291-9f05-5491-42e8-c29c9a023647}</Project>
-      <Name>TobiiXRSDK</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="GazeModifierEditor.csproj">
-      <Project>{d01661e3-2143-4b2e-c11d-c3df20737e75}</Project>
-      <Name>GazeModifierEditor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="TobiiXRCore.csproj">
-      <Project>{a43c0a16-a6c6-ab68-dda5-39bac81206fb}</Project>
-      <Name>TobiiXRCore</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="TobiiXRInternalEditor.csproj">
-      <Project>{c06d0171-9c91-6b52-0ad1-942efaa3b633}</Project>
-      <Name>TobiiXRInternalEditor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="TobiiXRG2OM.csproj">
-      <Project>{fac4b119-da04-7313-6b09-eec7060af9b6}</Project>
-      <Name>TobiiXRG2OM</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="TobiiXRDevTools.csproj">
-      <Project>{d8a21535-17b1-6f71-4aa4-92810e042116}</Project>
-      <Name>TobiiXRDevTools</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
