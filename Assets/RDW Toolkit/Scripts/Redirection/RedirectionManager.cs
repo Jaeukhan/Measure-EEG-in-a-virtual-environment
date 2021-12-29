@@ -148,6 +148,10 @@ public class RedirectionManager : MonoBehaviour {
     public int baselinesecond = 0;
     [HideInInspector]
     public float timefactor = 1.0f;
+    [HideInInspector]
+    public float[] gains = {0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f};
+    [HideInInspector]
+    public List<string> turndir = new List<string>() {"L", "R"};
 
     public GeometryInfo.SpaceShape spaceShape;
 
@@ -161,7 +165,6 @@ public class RedirectionManager : MonoBehaviour {
     private float[] randrot;
     private bool beepbool = true;
     private bool startexp = true;
-  
 
     //[HideInInspector]
     //bool needChange1 = false;
@@ -223,7 +226,11 @@ public class RedirectionManager : MonoBehaviour {
         SetReferenceForStatisticsLogger();
         SetReferenceForBodyHeadFollower();
 
-        sw = new StreamWriter("data.csv", false);
+        gains = visualizerManager.Shuffle(gains); //gain 섞기
+        System.Random rnd = new System.Random();
+        randdir = turndir.OrderBy(item => rnd.Next()); // random 선택
+
+        sw = new StreamWriter(visualizerManager.exporder+"_data.csv", false);
 
         // The rule is to have RedirectionManager call all "Awake"-like functions that rely on RedirectionManager as an "Initialize" call.
         if(!simulationManager.runInSimulationMode) resetTrigger.Initialize();
@@ -250,32 +257,24 @@ public class RedirectionManager : MonoBehaviour {
 	void Start () {
         simulatedTime = 0;
         UpdatePreviousUserState();
-        if (gainrand == true)
-        {
-            UnityEngine.Random.InitState(seed);
-            float[] ran = new float[2] {1.0f, 1.6f};
-            randrot = visualizerManager.Shuffle(ran);
-            ROT_GAIN = randrot[0];
-            Debug.Log(ROT_GAIN);
-        }
+        ROT_GAIN = gains[Global.count];
+        
+        // List<int> randomOrder = new List<int>() {0, 1, 2, 3};
+        // System.Random rnd = new System.Random();
+        // System.Linq.IOrderedEnumerable<int> randomizedNums = randomOrder.OrderBy(item => rnd.Next());
+        // randomized = new List<int>();
+        // foreach (int i in randomizedNums)
+        // {
+        //     randomized.Add(i);
+        // }
 
-
-        List<int> randomOrder = new List<int>() {0, 1, 2, 3};
-        System.Random rnd = new System.Random();
-        System.Linq.IOrderedEnumerable<int> randomizedNums = randomOrder.OrderBy(item => rnd.Next());
-        randomized = new List<int>();
-        foreach (int i in randomizedNums)
-        {
-            randomized.Add(i);
-        }
-
-        for(int i = 0; i<4; i++)
-        {
-            if(randomized[i] == 0)
-            {
-                initialIndex = i;
-            }
-        }
+        // for(int i = 0; i<4; i++)
+        // {
+        //     if(randomized[i] == 0)
+        //     {
+        //         initialIndex = i;
+        //     }
+        // }
 
 	}
     void StartTimeSet()
@@ -477,10 +476,11 @@ public class RedirectionManager : MonoBehaviour {
         if (_VisualizerManager.savestate)
         {
             simulatedTime += 1.0f / targetFPS;
-            SaveData(ROT_GAIN, visualizerManager.exporder);
+            SaveData(gains[Global.count], visualizerManager.exporder);
         }
 
     }
+
 
     public void SaveData(float curvature, string ordername) //, int repetition, int count
     {
