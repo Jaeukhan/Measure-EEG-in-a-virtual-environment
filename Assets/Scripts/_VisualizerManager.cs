@@ -48,7 +48,7 @@ namespace Vrwave
         private EEGRawSignal rawSignalData;
         private int index = 0;
         // StringBuilder timersb = new StringBuilder();
-        private string eegdirectory = "Assets/WaveResults";
+        private string eegdirectory = "WaveResults";
 
 
 
@@ -315,7 +315,7 @@ namespace Vrwave
             {
                 sb.AppendLine(string.Join(delimiter, output[index]));
             }
-            string filePath = Path.Combine("Assets/WaveResults", "EEG_"+DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
+            string filePath = Path.Combine("WaveResults", "EEG_"+DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
             StreamWriter outStream = System.IO.File.CreateText(filePath);
             outStream.WriteLine(sb);
             outStream.Close();

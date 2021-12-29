@@ -361,25 +361,30 @@ public class RedirectionManager : MonoBehaviour {
 
             if ((Time.time -startTime)/ timefactor >= 8)
             {
+                beep.Play();
                 ROT_GAIN = 1.1f;
             }
             
             if ((Time.time -startTime)/ timefactor >= 13)
             {
+                beep.Play();
                 ROT_GAIN = 1.2f;
             }
             
             if ((Time.time -startTime)/ timefactor >= 18)
             {
+                beep.Play();
                 ROT_GAIN = 1.3f;
             }
 
-                        if ((Time.time -startTime)/ timefactor >= 23)
+            if ((Time.time -startTime)/ timefactor >= 23)
             {
+                beep.Play();
                 ROT_GAIN = 1.4f;
             }
-                        if ((Time.time -startTime)/ timefactor >= 28)
+            if ((Time.time -startTime)/ timefactor >= 28)
             {
+                beep.Play();
                 ROT_GAIN = 1.5f;
             }
 

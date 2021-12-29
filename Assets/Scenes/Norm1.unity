@@ -2370,7 +2370,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243366450046692526, guid: ec12f7772c03e4c4c9e4c2f1643595ad,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7c632a0ee6243ed4dbee0e5b3164c3ca, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d02168b7a7279c54eb10e8a1e5c37075, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
@@ -2915,7 +2915,7 @@ MonoBehaviour:
   username: ju
   writing: 0
   exitstate: 0
-  exporder: g
+  exporder: exp
 --- !u!114 &1416940747
 MonoBehaviour:
   m_ObjectHideFlags: 0
