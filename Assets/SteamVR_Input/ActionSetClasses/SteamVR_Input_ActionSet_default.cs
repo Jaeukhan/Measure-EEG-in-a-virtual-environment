@@ -113,6 +113,30 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean Trialexit
+        {
+            get
+            {
+                return SteamVR_Actions.default_Trialexit;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean GreaterG
+        {
+            get
+            {
+                return SteamVR_Actions.default_GreaterG;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean SmallerG
+        {
+            get
+            {
+                return SteamVR_Actions.default_SmallerG;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get

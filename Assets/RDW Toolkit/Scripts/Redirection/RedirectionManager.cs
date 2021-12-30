@@ -165,6 +165,7 @@ public class RedirectionManager : MonoBehaviour {
     private float[] randrot;
     private bool beepbool = true;
     private bool startexp = true;
+    private bool eyesave = false;
 
     //[HideInInspector]
     //bool needChange1 = false;
@@ -227,8 +228,10 @@ public class RedirectionManager : MonoBehaviour {
         SetReferenceForBodyHeadFollower();
 
         gains = visualizerManager.Shuffle(gains); //gain 섞기
+        Debug.Log(gains);
+
         System.Random rnd = new System.Random();
-        randdir = turndir.OrderBy(item => rnd.Next()); // random 선택
+        System.Linq.IOrderedEnumerable<string> randdir = turndir.OrderBy(item => rnd.Next()); // random 선택
 
         sw = new StreamWriter(visualizerManager.exporder+"_data.csv", false);
 
@@ -255,6 +258,7 @@ public class RedirectionManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        ROT_GAIN = gains[visualizerManager.Gcount];
         simulatedTime = 0;
         UpdatePreviousUserState();
         ROT_GAIN = gains[Global.count];
@@ -321,10 +325,7 @@ public class RedirectionManager : MonoBehaviour {
             {
                 visualizerManager.exitstate = true;
                 beepbool = false;
-                if (actionTest.GetoddballCount())
-                {
-                    Debug.Log("가상환경이 적게돌아감");
-                }
+
             }
             Debug.Log((Time.time - startTime) / timefactor);
             baselinesecond = (int)((Time.time-startTime) / timefactor);
@@ -397,10 +398,6 @@ public class RedirectionManager : MonoBehaviour {
                 beep.Play();
                 visualizerManager.exitstate = true;
                 beepbool = false;
-                if (actionTest.GetoddballCount())
-                {
-                    Debug.Log("가상환경이 적게돌아감");
-                }
             }
 
             baselinesecond = (int)((Time.time - startTime) / timefactor);
@@ -410,10 +407,9 @@ public class RedirectionManager : MonoBehaviour {
 
     void FixedUpdate()
     {
-
         //BeepSoundExp();
-        chairroate();
-
+        // chairroate();
+        ROT_GAIN = gains[visualizerManager.Gcount];
         UpdateCurrentUserState();
         CalculateStateChanges();
 
@@ -473,7 +469,8 @@ public class RedirectionManager : MonoBehaviour {
     }
     void LateUpdate()
     {
-        if (_VisualizerManager.savestate)
+        if (visualizerManager.writing) eyesave = true;
+        if (eyesave)
         {
             simulatedTime += 1.0f / targetFPS;
             SaveData(gains[Global.count], visualizerManager.exporder);

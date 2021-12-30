@@ -26,12 +26,6 @@ public class PushCheckingTime : MonoBehaviour
             startstate = false;
         }
         //push controller checking time        
-        if(actionTest.GetoddballCount())
-        {
-            actiontime = Time.time - starttime;
-            sb.Append(string.Format("{0:f4}", actiontime) + ",");
-            sb.AppendLine();
-        }
     }
     public void Save()
     {

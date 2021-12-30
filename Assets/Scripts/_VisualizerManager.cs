@@ -18,8 +18,8 @@ namespace Vrwave
         [Header("Device Status")]
         public Transform VRCamera;
 
-        [Header("Raw Signals")]
-        public LineChart RawSignalCharts;
+        // [Header("Raw Signals")]
+        // public LineChart RawSignalCharts;
         public SaveData[] saveDatas;
         [Header("Action Test")]
         public ActionTest actionTest;
@@ -31,6 +31,9 @@ namespace Vrwave
         SimulationManager simulationManager;
         [HideInInspector]
         PushCheckingTime pushCheckingTime;
+        [Range(0,10)]
+        public int Gcount = 0;
+        [HideInInspector]
         public WalkingTest walkingTest;
         public string username;
         public static bool savestate = false;
@@ -49,18 +52,21 @@ namespace Vrwave
         private int index = 0;
         // StringBuilder timersb = new StringBuilder();
         private string eegdirectory = "WaveResults";
+        [HideInInspector]
+        public bool stopsign = false;
+        private float startposition;
+        [HideInInspector]
+        public bool possetting = true;
 
 
 
-        int stand_num;
-        int odd_num;
-        int ordernum = 0;
         float timer;
-
-        float waitingTime;
-        List<int> randomOrder = new List<int>(); // 0 : 8개, 1 : 2개
-        int[] displayOrder;
-        Vector3 z1 = new Vector3(0, 0, 1);
+        // int stand_num;
+        // int odd_num;
+        // int ordernum = 0;
+        // float waitingTime;
+        // List<int> randomOrder = new List<int>(); // 0 : 8개, 1 : 2개
+        // int[] displayOrder;
 
 
         void Awake()
@@ -121,13 +127,33 @@ namespace Vrwave
 
         void FixedUpdate()
         {
-
-            //if (savestate && oddballevent)
-            //{
-            //    StartCoroutine(Displaytarget());
-            //    oddballevent = false;
-            //}
-
+            if (writing)
+            {
+                if (possetting)
+                {
+                    startposition = redirectionManager.headTransform.transform.eulerAngles.y;
+                    possetting = false;
+                }
+                if (stopsign)  
+                {
+                    GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
+                    GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = true; 
+                }
+                else if(!stopsign)
+                {
+                    GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = true; 
+                    GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
+                }
+ 
+                actionTest.countup = true;
+            }
+        }
+        void Update()
+        {
+            if (writing)
+            {
+                if (Math.Abs(redirectionManager.headTransform.transform.eulerAngles.y - startposition) >= 90) stopsign=true;
+            }
         }
         // IEnumerator Displaytarget()
         // {
@@ -178,13 +204,12 @@ namespace Vrwave
         // }
 
 
-        void Update()
+        void LateUpdate()
         {
             // if (savestate)
             // {
             //     starttime = Time.time;
             // }
-
             PushExit();
         }
         void PushExit()

@@ -131,7 +131,7 @@ namespace Vrwave {
         }
         public void Initialize()
         {
-            eEGdatas = new EEGdatas();
+            eEGdatas.eeglist.Clear();
         }
  
         public class EEGdatas

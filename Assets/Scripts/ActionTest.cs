@@ -6,18 +6,72 @@ using Vrwave;
 
 public class ActionTest : MonoBehaviour
 {
-    public SteamVR_Input_Sources handType;
-    public SteamVR_Action_Boolean oddballCount;
-
-
-    private bool saving = true;
+    public SteamVR_Action_Boolean greater;
+    public SteamVR_Action_Boolean smaller;
+    public SteamVR_Action_Boolean trialexit;
+    [HideInInspector]
+    public RedirectionManager redirectionManager;
+    [HideInInspector]
+    public _VisualizerManager visualizerManager;
+    [HideInInspector]
+    public bool countup = true;
     // Update is called once per frame
+    void  Awake()
+    {
+         redirectionManager = GameObject.Find("Redirected User").transform.gameObject.GetComponent<RedirectionManager>();
+         visualizerManager = GameObject.Find("LooxidManager").transform.gameObject.GetComponent<_VisualizerManager>();
+    }
     void Update()
     {
+        if (_VisualizerManager.savestate &&trialexit.state)
+        {
+            Debug.Log("종료");
+            visualizerManager.exitstate = true;
+            GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
+            GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
+        }
+        // if(!visualizerManager.writing && greater.state)
+        // {
+        //     Debug.Log("greater");
+        //     // RedirectionManager.Global.selection = "greater";
+        //     if (countup)
+        //     {
+        //         visualizerManager.Gcount += 1;
+        //         countup = false;
+        //     }
+        //     visualizerManager.possetting = true;
+        //     visualizerManager.stopsign = false;
+        //     Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString());
+        // }
+        if(!visualizerManager.writing)
+        {
+            if(smaller.state)
+            {
+                Debug.Log("smaller");
+                // RedirectionManager.Global.selection = "greater";
+                if (countup)
+                {
+                    visualizerManager.Gcount += 1;
+                    countup = false;
+                }
+                visualizerManager.possetting = true;
+                visualizerManager.stopsign = false;
+                Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString());
+            }
+            else if  (greater.state)
+            {
+                Debug.Log("greater");
+                // RedirectionManager.Global.selection = "greater";
+                if (countup)
+                {
+                    visualizerManager.Gcount += 1;
+                    countup = false;
+                }
+                visualizerManager.possetting = true;
+                visualizerManager.stopsign = false;
+                Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString()); 
+            }
+        }
     }
 
-    public bool GetoddballCount()
-    {
-        return oddballCount.GetState(handType);
-    }
 }
