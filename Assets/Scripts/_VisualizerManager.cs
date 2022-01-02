@@ -141,8 +141,8 @@ namespace Vrwave
                     GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = true; 
                 }
                 else if(!stopsign)
-                {
-                    GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = true; 
+                {// left냐 right에 따른 표시
+                    // GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = true; 
                     GameObject.Find("TurnSign").transform.GetChild(1).GetComponent<Canvas>().enabled = true; 
                     GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
                 }

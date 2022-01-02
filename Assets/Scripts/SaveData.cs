@@ -11,8 +11,9 @@ namespace Vrwave {
         public int Width = 265;
         public int Height = 90;
         public bool center_is_zero = true;
+        private List<double> eeglist = new List<double>();
 
-        private EEGdatas eEGdatas = new EEGdatas();
+        // private EEGdatas eEGdatas = new EEGdatas();
         private double[] datalist;
         private bool saving = true;
         private LineRenderer line;
@@ -85,7 +86,7 @@ namespace Vrwave {
             {
                 for (int i = 0; i < datalist.Length; i++)
                 {
-                    eEGdatas.eeglist.Add(datalist[i]);
+                    eeglist.Add(datalist[i]);
                 }
                 yield return new WaitForSeconds(4);
             }
@@ -98,15 +99,15 @@ namespace Vrwave {
 
         public List<double> GetValue()
         {
-            return eEGdatas.eeglist;
+            return eeglist;
         }
         public int GetLength()
         {
-            return eEGdatas.eeglist.ToArray().Length;
+            return eeglist.ToArray().Length;
         }
         public double GetValueOne(int i)
         {
-            return eEGdatas.eeglist[i];
+            return eeglist[i];
         }
         public void Printdatalist()
         {
@@ -115,29 +116,29 @@ namespace Vrwave {
 
         public void Printeeg()
         {
-            Debug.Log(eEGdatas.eeglist.ToArray().Length);
+            Debug.Log(eeglist.ToArray().Length);
         }
 
         public void Save(int num)
         {
-            Debug.Log(eEGdatas.eeglist.ToArray().Length);
+            Debug.Log(eeglist.ToArray().Length);
             string filePath = Path.Combine("Assets/WaveResults", (EEGSensorID)num + "_" + DateTime.Now.ToString("yyyy-MM-dd") + ".json");
-            File.WriteAllText(filePath, JsonUtility.ToJson(eEGdatas));
+            File.WriteAllText(filePath, JsonUtility.ToJson(eeglist));
         }
         public void Save(string name)
         {
             string filePath = Path.Combine("Assets/WaveResults", name + "_" + DateTime.Now.ToString("yyyy-MM-dd") + ".json");
-            File.WriteAllText(filePath, JsonUtility.ToJson(eEGdatas));
+            File.WriteAllText(filePath, JsonUtility.ToJson(eeglist));
         }
         public void Initialize()
         {
-            eEGdatas.eeglist.Clear();
+            eeglist.Clear();
         }
  
-        public class EEGdatas
-        { 
-            public List<double> eeglist = new List<double>();
-        }
+        // public class EEGdatas
+        // { 
+        //     public List<double> eeglist = new List<double>();
+        // }
     }
 
 }

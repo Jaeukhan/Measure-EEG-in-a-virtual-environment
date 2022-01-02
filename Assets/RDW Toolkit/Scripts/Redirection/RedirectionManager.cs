@@ -149,7 +149,7 @@ public class RedirectionManager : MonoBehaviour {
     [HideInInspector]
     public float timefactor = 1.0f;
     [HideInInspector]
-    public float[] gains = {0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f};
+    public float[] gains = {0.1f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 2,0f}; //11개 + 2개(pretest)
     [HideInInspector]
     public List<string> turndir = new List<string>() {"L", "R"};
 
@@ -166,6 +166,7 @@ public class RedirectionManager : MonoBehaviour {
     private bool beepbool = true;
     private bool startexp = true;
     private bool eyesave = false;
+    // private int lrcount;
 
     //[HideInInspector]
     //bool needChange1 = false;
@@ -228,10 +229,11 @@ public class RedirectionManager : MonoBehaviour {
         SetReferenceForBodyHeadFollower();
 
         gains = visualizerManager.Shuffle(gains); //gain 섞기
-        Debug.Log(gains);
 
-        System.Random rnd = new System.Random();
-        System.Linq.IOrderedEnumerable<string> randdir = turndir.OrderBy(item => rnd.Next()); // random 선택
+        // lrcount = UnityEngine.Random.Range(1, gains.Length);
+
+        // System.Random rnd = new System.Random();
+        // System.Linq.IOrderedEnumerable<string> randdir = turndir.OrderBy(item => rnd.Next()); // random 선택
 
         sw = new StreamWriter(visualizerManager.exporder+"_data.csv", false);
 
@@ -261,7 +263,6 @@ public class RedirectionManager : MonoBehaviour {
         ROT_GAIN = gains[visualizerManager.Gcount];
         simulatedTime = 0;
         UpdatePreviousUserState();
-        ROT_GAIN = gains[Global.count];
         
         // List<int> randomOrder = new List<int>() {0, 1, 2, 3};
         // System.Random rnd = new System.Random();
