@@ -165,7 +165,8 @@ public class RedirectionManager : MonoBehaviour {
     private float[] randrot;
     private bool beepbool = true;
     private bool startexp = true;
-    private bool eyesave = false;
+    [HideInInspector]
+    public bool eyesave = false;
     // private int lrcount;
 
     //[HideInInspector]

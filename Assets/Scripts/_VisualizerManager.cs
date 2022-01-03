@@ -150,13 +150,7 @@ namespace Vrwave
                 actionTest.countup = true;
             }
         }
-        void Update()
-        {
-            if (writing)
-            {
-                if (Math.Abs(redirectionManager.headTransform.transform.eulerAngles.y - startposition) >= 90) stopsign=true;
-            }
-        }
+
         // IEnumerator Displaytarget()
         // {
         //     while (true)
@@ -208,6 +202,10 @@ namespace Vrwave
 
         void LateUpdate()
         {
+            if (writing)
+            {
+                if (Math.Abs(redirectionManager.headTransform.transform.eulerAngles.y - startposition) >= 90) stopsign=true;
+            }
             // if (savestate)
             // {
             //     starttime = Time.time;
@@ -346,7 +344,6 @@ namespace Vrwave
             StreamWriter outStream = System.IO.File.CreateText(filePath);
             outStream.WriteLine(sb);
             outStream.Close();
-            saveDatas.Initialize();
             // walkingTest.WalkingTestSave();
             // string resetpath = Path.Combine("Assets/WaveResults", "Resettime" + DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
             // StreamWriter outStream2 = System.IO.File.CreateText(resetpath);
@@ -396,7 +393,10 @@ namespace Vrwave
             outStream.WriteLine(sb);
             outStream.Flush();
             outStream.Close();
-            saveDatas.Initialize();
+            for (int i = 0; i <saveDatas.Length; i++)
+            {
+            saveDatas[i].DataClear();
+            }
         }
 
         public void GetRedirectManager()

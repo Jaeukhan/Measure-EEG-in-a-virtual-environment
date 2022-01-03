@@ -29,6 +29,7 @@ public class ActionTest : MonoBehaviour
             visualizerManager.exitstate = true;
             GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
             GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
+            redirectionManager.eyesave = false;
         }
         // if(!visualizerManager.writing && greater.state)
         // {
@@ -49,6 +50,7 @@ public class ActionTest : MonoBehaviour
             {
                 Debug.Log("smaller");
                 // RedirectionManager.Global.selection = "greater";
+                Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString());
                 if (countup)
                 {
                     visualizerManager.Gcount += 1;
@@ -56,12 +58,13 @@ public class ActionTest : MonoBehaviour
                 }
                 visualizerManager.possetting = true;
                 visualizerManager.stopsign = false;
-                Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString());
+
             }
             else if  (greater.state)
             {
                 Debug.Log("greater");
                 // RedirectionManager.Global.selection = "greater";
+                Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString()); 
                 if (countup)
                 {
                     visualizerManager.Gcount += 1;
@@ -69,7 +72,7 @@ public class ActionTest : MonoBehaviour
                 }
                 visualizerManager.possetting = true;
                 visualizerManager.stopsign = false;
-                Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString()); 
+
             }
         }
     }

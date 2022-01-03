@@ -130,7 +130,7 @@ namespace Vrwave {
             string filePath = Path.Combine("Assets/WaveResults", name + "_" + DateTime.Now.ToString("yyyy-MM-dd") + ".json");
             File.WriteAllText(filePath, JsonUtility.ToJson(eeglist));
         }
-        public void Initialize()
+        public void DataClear()
         {
             eeglist.Clear();
         }
