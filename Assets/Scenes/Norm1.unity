@@ -3189,6 +3189,7 @@ MonoBehaviour:
   redirectionManager: {fileID: 0}
   visualizerManager: {fileID: 0}
   countup: 1
+  beep: {fileID: 0}
 --- !u!1 &1237838008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3432,10 +3433,10 @@ MonoBehaviour:
   actionTest: {fileID: 1220012787}
   Gcount: 0
   walkingTest: {fileID: 5670907110489250636}
-  username: ju
+  username: hj
   writing: 0
   exitstate: 0
-  exporder: 1
+  exporder: 5
   stopsign: 0
   possetting: 1
 --- !u!114 &1416940747
@@ -4046,6 +4047,7 @@ MonoBehaviour:
   redirectionManager: {fileID: 0}
   visualizerManager: {fileID: 0}
   countup: 1
+  beep: {fileID: 0}
 --- !u!1 &1992543093
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class RedirectionManager : MonoBehaviour {
 
     [Tooltip("rotation gain applied")]
 
-    [Range(0.5F, 2.0F)]
+    [Range(0.3F, 2.0F)]
     public float ROT_GAIN = 0.67F;// -0.2F;
     // [Range(0.5F, 2.0F)]
     //public float change_rotgain = 0.67F;// -0.2F;
@@ -149,9 +149,9 @@ public class RedirectionManager : MonoBehaviour {
     [HideInInspector]
     public float timefactor = 1.0f;
     [HideInInspector]
-    public float[] gains = {0.1f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 2,0f}; //11개 + 2개(pretest)
+    public float[]  gains; //11개 + 2개(pretest), 
     [HideInInspector]
-    public List<string> turndir = new List<string>() {"L", "R"};
+    public string[] turndir; //= new List<string>() {"L", "R"};
 
     public GeometryInfo.SpaceShape spaceShape;
 
@@ -167,7 +167,7 @@ public class RedirectionManager : MonoBehaviour {
     private bool startexp = true;
     [HideInInspector]
     public bool eyesave = false;
-    // private int lrcount;
+    private int rcount;
 
     //[HideInInspector]
     //bool needChange1 = false;
@@ -228,11 +228,20 @@ public class RedirectionManager : MonoBehaviour {
         SetReferenceForSnapshotGenerator();
         SetReferenceForStatisticsLogger();
         SetReferenceForBodyHeadFollower();
-
+        gains= new float[] {0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 0.3f, 2.0f};
         gains = visualizerManager.Shuffle(gains); //gain 섞기
-
-        // lrcount = UnityEngine.Random.Range(1, gains.Length);
-
+        rcount = UnityEngine.Random.Range(5, 7);
+        turndir = new string[gains.Length];
+        for (int i = 0; i < rcount; i++)
+        {
+            turndir[i] = "R";
+        }
+        for(int i = rcount; i < gains.Length; i++)
+        {
+            turndir[i] = "L";
+        }
+        Debug.Log(turndir.Length);
+        turndir = visualizerManager.Shuffle(turndir);
         // System.Random rnd = new System.Random();
         // System.Linq.IOrderedEnumerable<string> randdir = turndir.OrderBy(item => rnd.Next()); // random 선택
 

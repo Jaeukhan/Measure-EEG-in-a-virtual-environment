@@ -31,7 +31,7 @@ namespace Vrwave
         SimulationManager simulationManager;
         [HideInInspector]
         PushCheckingTime pushCheckingTime;
-        [Range(0,10)]
+        [Range(0,12)]
         public int Gcount = 0;
         [HideInInspector]
         public WalkingTest walkingTest;
@@ -136,15 +136,26 @@ namespace Vrwave
                 }
                 if (stopsign)  
                 {
-                    GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
+                    // GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
+                    GameObject.Find("TurnSign").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
                     GameObject.Find("TurnSign").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
-                    GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = true; 
+                    // GameObject.Find("RT").transform.GetChild(1).GetComponenkt<Canvas>().enabled = true; 
                 }
                 else if(!stopsign)
                 {// left냐 right에 따른 표시
                     // GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = true; 
+                    if(redirectionManager.turndir[Gcount] == "R")
+                    {
                     GameObject.Find("TurnSign").transform.GetChild(1).GetComponent<Canvas>().enabled = true; 
-                    GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
+                    //GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
+                    }
+                    else if(redirectionManager.turndir[Gcount] == "L")
+                    {
+                    GameObject.Find("TurnSign").transform.GetChild(0).GetComponent<Canvas>().enabled = true; 
+                    //GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
+                    }
+
+
                 }
  
                 actionTest.countup = true;
@@ -204,7 +215,7 @@ namespace Vrwave
         {
             if (writing)
             {
-                if (Math.Abs(redirectionManager.headTransform.transform.eulerAngles.y - startposition) >= 90) stopsign=true;
+                if (Math.Abs(redirectionManager.headTransform.transform.eulerAngles.y - startposition) >= 89) stopsign=true;
             }
             // if (savestate)
             // {
@@ -233,30 +244,40 @@ namespace Vrwave
                 saveDatas[i].Save(i);
             }
         }
-
-        public int[] Shuffle(int[] deck)
+        public T[] Shuffle<T>(T[] deck)
         {
             for (int i = 0; i < deck.Length; i++)
             {
-                int temp = deck[i];
+                T temp = deck[i];
                 int randomIndex = UnityEngine.Random.Range(0, deck.Length);
                 deck[i] = deck[randomIndex];
                 deck[randomIndex] = temp;
             }
             return deck;
         }
+        // public int[] Shuffle(int[] deck)
+        // {
+        //     for (int i = 0; i < deck.Length; i++)
+        //     {
+        //         int temp = deck[i];
+        //         int randomIndex = UnityEngine.Random.Range(0, deck.Length);
+        //         deck[i] = deck[randomIndex];
+        //         deck[randomIndex] = temp;
+        //     }
+        //     return deck;
+        // }
 
-        public float[] Shuffle(float[] deck)
-        {
-            for (int i = 0; i < deck.Length; i++)
-            {
-                float temp = deck[i];
-                int randomIndex = UnityEngine.Random.Range(0, deck.Length);
-                deck[i] = deck[randomIndex];
-                deck[randomIndex] = temp;
-            }
-            return deck;
-        }
+        // public float[] Shuffle(float[] deck)
+        // {
+        //     for (int i = 0; i < deck.Length; i++)
+        //     {
+        //         float temp = deck[i];
+        //         int randomIndex = UnityEngine.Random.Range(0, deck.Length);
+        //         deck[i] = deck[randomIndex];
+        //         deck[randomIndex] = temp;
+        //     }
+        //     return deck;
+        // }
 
             public double Min(List<double> minList)
         {

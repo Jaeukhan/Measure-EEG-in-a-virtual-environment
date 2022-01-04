@@ -15,16 +15,20 @@ public class ActionTest : MonoBehaviour
     public _VisualizerManager visualizerManager;
     [HideInInspector]
     public bool countup = true;
+    [HideInInspector]
+    public AudioSource beep;
     // Update is called once per frame
     void  Awake()
     {
          redirectionManager = GameObject.Find("Redirected User").transform.gameObject.GetComponent<RedirectionManager>();
          visualizerManager = GameObject.Find("LooxidManager").transform.gameObject.GetComponent<_VisualizerManager>();
+         beep = GameObject.Find("beep").transform.gameObject.GetComponent<AudioSource>();
     }
     void Update()
     {
-        if (_VisualizerManager.savestate &&trialexit.state)
-        {
+        if (_VisualizerManager.savestate &&Input.GetKeyDown(KeyCode.A))
+        {   
+            beep.Play();
             Debug.Log("종료");
             visualizerManager.exitstate = true;
             GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
