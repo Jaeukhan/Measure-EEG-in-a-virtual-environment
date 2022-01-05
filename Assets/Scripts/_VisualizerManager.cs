@@ -52,12 +52,12 @@ namespace Vrwave
         private int index = 0;
         // StringBuilder timersb = new StringBuilder();
         private string eegdirectory = "WaveResults";
+        private string afcdirect ="2afc";
         [HideInInspector]
         public bool stopsign = false;
         private float startposition;
         [HideInInspector]
         public bool possetting = true;
-
 
 
         float timer;
@@ -72,6 +72,7 @@ namespace Vrwave
         void Awake()
         {
             eegdirectory = $"Assets/WaveResults/{username}";
+            afcdirect = $"2afc/{username}";
             GetRedirectManager();
             GetSimulatorManager();
             GetCheckingTime();
@@ -133,12 +134,13 @@ namespace Vrwave
                 {
                     startposition = redirectionManager.headTransform.transform.eulerAngles.y;
                     possetting = false;
+                    actionTest.flag = null;
                 }
                 if (stopsign)  
                 {
                     // GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
-                    GameObject.Find("TurnSign").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
-                    GameObject.Find("TurnSign").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
+                    // GameObject.Find("TurnSign").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
+                    // GameObject.Find("TurnSign").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
                     // GameObject.Find("RT").transform.GetChild(1).GetComponenkt<Canvas>().enabled = true; 
                 }
                 else if(!stopsign)
@@ -154,8 +156,6 @@ namespace Vrwave
                     GameObject.Find("TurnSign").transform.GetChild(0).GetComponent<Canvas>().enabled = true; 
                     //GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
                     }
-
-
                 }
  
                 actionTest.countup = true;
@@ -215,7 +215,7 @@ namespace Vrwave
         {
             if (writing)
             {
-                if (Math.Abs(redirectionManager.headTransform.transform.eulerAngles.y - startposition) >= 89) stopsign=true;
+                if (Math.Abs(redirectionManager.headTransform.transform.eulerAngles.y - startposition) >= 88) stopsign=true;
             }
             // if (savestate)
             // {
@@ -418,6 +418,18 @@ namespace Vrwave
             {
             saveDatas[i].DataClear();
             }
+        }
+        public void Save2afc(string gs, int count)
+        {
+            StreamWriter outStream2 = new StreamWriter(afcdirect+"/"+exporder+"_"+count.ToString()+gs+".csv");
+            DirectoryInfo di = new DirectoryInfo(afcdirect);
+            if(di.Exists == false)
+            {
+                di.Create();
+            }
+            outStream2.WriteLine(gs+','+count.ToString());
+            outStream2.Flush();
+            outStream2.Close();
         }
 
         public void GetRedirectManager()

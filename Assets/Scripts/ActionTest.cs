@@ -17,6 +17,7 @@ public class ActionTest : MonoBehaviour
     public bool countup = true;
     [HideInInspector]
     public AudioSource beep;
+    public string flag = null;
     // Update is called once per frame
     void  Awake()
     {
@@ -28,12 +29,14 @@ public class ActionTest : MonoBehaviour
     {
         if (_VisualizerManager.savestate &&Input.GetKeyDown(KeyCode.A))
         {   
-            beep.Play();
             Debug.Log("종료");
             visualizerManager.exitstate = true;
-            GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
-            GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
+            GameObject.Find("TurnSign").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
+            GameObject.Find("TurnSign").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
+            // GameObject.Find("RT").transform.GetChild(0).GetComponent<Canvas>().enabled = false; 
+            // GameObject.Find("RT").transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
             redirectionManager.eyesave = false;
+            beep.Play();
         }
         // if(!visualizerManager.writing && greater.state)
         // {
@@ -54,7 +57,12 @@ public class ActionTest : MonoBehaviour
             {
                 Debug.Log("smaller");
                 // RedirectionManager.Global.selection = "greater";
-                Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString());
+                if (flag==null)
+                {
+                    flag = "t";
+                    visualizerManager.Save2afc("s", visualizerManager.Gcount);
+                }
+                // Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString());
                 if (countup)
                 {
                     visualizerManager.Gcount += 1;
@@ -68,7 +76,12 @@ public class ActionTest : MonoBehaviour
             {
                 Debug.Log("greater");
                 // RedirectionManager.Global.selection = "greater";
-                Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString()); 
+                if (flag==null)
+                {
+                    flag = "t";
+                    visualizerManager.Save2afc("g", visualizerManager.Gcount);
+                }
+                    // Debug.Log(visualizerManager.Gcount.ToString()+','+redirectionManager.gains[visualizerManager.Gcount].ToString()); 
                 if (countup)
                 {
                     visualizerManager.Gcount += 1;
@@ -76,9 +89,8 @@ public class ActionTest : MonoBehaviour
                 }
                 visualizerManager.possetting = true;
                 visualizerManager.stopsign = false;
-
             }
         }
     }
-
 }
+

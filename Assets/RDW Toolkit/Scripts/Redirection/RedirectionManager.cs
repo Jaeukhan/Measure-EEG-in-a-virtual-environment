@@ -581,7 +581,6 @@ public class RedirectionManager : MonoBehaviour {
 
         sb.Append(Global.selection);
 
-
         sw.WriteLine(sb.ToString());
 
     }
